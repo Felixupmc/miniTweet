@@ -1,0 +1,28 @@
+.MenuItem {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.MenuItem:hover {
+    background-color: var(--twitter-backround);
+    border-radius: 30px;
+    color: var(--twitter-color)
+}
+
+
+.MenuItem > .Icon {
+    padding: 20px;
+}
+
+.MenuItem > h2 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.MenuItem--active {
+    background-color: var(--twitter-backround);
+    color: var(--twitter-color);
+    border-radius: 30px;
+}
