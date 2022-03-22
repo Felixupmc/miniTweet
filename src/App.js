@@ -1,9 +1,8 @@
 import React from 'react'
 import './App.css';
 import './Menu'
-import Feed from './Feed'
+import Main from './Main'
 import Menu from './Menu';
-import Widgets from './Widgets';
 
 function App() {
   return (
@@ -12,10 +11,8 @@ function App() {
       <Menu />
 
 
-      <Feed />
+      <Main />
 
-
-      <Widgets />
 
     </div>
   );

@@ -21,10 +21,7 @@ function Menu(){
             <MenuItem text="Messages" Icon={AiTwotoneMail} />
             <MenuItem text="Saved" Icon={AiFillSave} />
             <MenuItem text="Profile" Icon={AiOutlineUser} />
-            
-            <button className='btn'>
-            Tweet
-            </button>
+
         </div>
     );
 
