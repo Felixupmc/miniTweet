@@ -6,11 +6,12 @@ import {AiTwotoneBell} from 'react-icons/ai'
 import {AiTwotoneMail} from 'react-icons/ai'
 import {AiFillSave} from 'react-icons/ai'
 import {AiOutlineUser} from 'react-icons/ai'
-import {AiFillStar} from 'react-icons/ai'
-import MenuItem from "./MenuItem";
+import MenuItem from "./MenuItem"
 
+function Menu( props ){
 
-function Menu(){
+    
+    
     return(
         <div className="menu">
             <div className="icon">

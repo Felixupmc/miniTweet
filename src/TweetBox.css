@@ -1,6 +1,6 @@
 .tweetBox {
     padding: 10px;
-    border-bottom: 8px solid var(--twitter-color);
+    border-bottom: 5px solid var(--twitter-color);
 }
 
 .tweetBox > form {
@@ -33,9 +33,4 @@
     font-size: 15pt;
     margin-left: auto;
     cursor: pointer;
-}
-
-.tweetButton:hover {
-    border: 15px;
-    border-color: black;
 }

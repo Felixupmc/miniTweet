@@ -28,7 +28,7 @@
 }
 
 .Tweet {
-    border-bottom: 10px solid var(--twitter-color);
+    border-bottom: 1px solid var(--twitter-color);
     align-items: flex-start;
 }
 

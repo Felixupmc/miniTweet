@@ -10,7 +10,7 @@
     top: 0;
     background-color: white;
     z-index: 100;
-    border: 1px solid var(--twitter-color);
+    border: 5px solid var(--twitter-color);
     padding: 15px 20px;
 }
 

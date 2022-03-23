@@ -15,6 +15,10 @@ function Main() {
             <TweetBox />
 
             <Tweet />
+            <Tweet />
+            <Tweet />
+            <Tweet />
+            <Tweet />
             {/* postList */}
             {/* postList */}
             {/* postList */}
