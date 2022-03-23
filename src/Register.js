@@ -1,16 +1,19 @@
 import React from "react";
-import "./Register.css";
+import "./Login.css";
 import Menu from "./Menu"
+import RegisterMain from "./RegisterMain.js"
 
-function Register () {
+function Login () {
 
     return (
-        <div className="register">
-            <h3>RRRRRRRRRRRRREEEEEEEEEEEEEEGISTEEEEEEEEEEEEEEEEEEEEEEER</h3>
+        <div className="login">
+            <Menu />
+
+            <RegisterMain />
         </div>
     )
 
     
 }
 
-export default Register
+export default Login

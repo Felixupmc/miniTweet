@@ -1,12 +1,39 @@
+
 .mainLogin {
     flex: 0.6;
     border-right: 1px solid var(--twitter-color);
     min-width: fit-content;
-    overflow-y: scroll;
 }
 
 
-.mainLogin {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+.mainLogin > h2 {
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+
+}
+
+.mainLogin > input {
+    font-size: 20px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+
+.btn {
+    background-color: var(--twitter-backround);
+    border: none;
+    color: black;
+    font-weight: 700;
+    text-transform: inherit;
+    border-radius: 30px;
+    height: 50px;
+    width: 300px;
+    margin-top: 20px;
+    font-size: 15pt;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
 }
