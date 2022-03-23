@@ -1,6 +1,7 @@
 import React from "react";
 import "./Main.css"
 import TweetBox from "./TweetBox"
+import Tweet from "./Tweet"
 
 function Main() {
     return (
@@ -13,6 +14,7 @@ function Main() {
             {/* TweatBox */}
             <TweetBox />
 
+            <Tweet />
             {/* postList */}
             {/* postList */}
             {/* postList */}

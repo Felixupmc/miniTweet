@@ -21,6 +21,14 @@ function Menu(){
             <MenuItem text="Messages" Icon={AiTwotoneMail} />
             <MenuItem text="Saved" Icon={AiFillSave} />
             <MenuItem text="Profile" Icon={AiOutlineUser} />
+            <div className="btns">
+                <button className="btn">
+                    Sign In
+                </button>
+                <button className="btn">
+                    Register
+                </button>
+            </div>
 
         </div>
     );

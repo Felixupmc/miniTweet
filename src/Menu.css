@@ -10,3 +10,25 @@
 .icon {
     font-size: 30px;
 }
+
+
+.btns {
+    display: flex;
+
+}
+
+.btn {
+    background-color: var(--twitter-backround);
+    border: none;
+    color: black;
+    font-weight: 700;
+    text-transform: inherit;
+    border-radius: 30px;
+    height: 50px;
+    width: 300px;
+    margin-top: 20px;
+    font-size: 15pt;
+    margin-left: auto;
+    cursor: pointer;
+    margin-left: 5px;
+}
