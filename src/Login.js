@@ -7,7 +7,9 @@ function Login () {
 
     return (
         <div className="login">
-            <h3>LLLLLLLLOOOOOOOOOOOOOOOOOOGIIIIIIIIIIIIIIII N</h3>
+            <Menu />
+
+            <MainLogin />
         </div>
     )
 

@@ -1,0 +1,12 @@
+.mainLogin {
+    flex: 0.6;
+    border-right: 1px solid var(--twitter-color);
+    min-width: fit-content;
+    overflow-y: scroll;
+}
+
+
+.mainLogin {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

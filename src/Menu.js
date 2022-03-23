@@ -8,25 +8,42 @@ import {AiFillSave} from 'react-icons/ai'
 import {AiOutlineUser} from 'react-icons/ai'
 import MenuItem from "./MenuItem"
 
+import { useNavigate } from "react-router-dom";
+
 function Menu( props ){
 
-    
-    
+    let navigate = useNavigate(); 
+    const routeChangeLogin = () =>{ 
+        let path = "/Login"; 
+        navigate(path);
+    }
+    const routeChangeRegister = () =>{ 
+        let path = "/Register"; 
+        navigate(path);
+    }
+    const routeChangeHome = () =>{ 
+        let path = "/"; 
+        navigate(path);
+    }
+
     return(
         <div className="menu">
             <div className="icon">
                 <MenuItem Icon={AiOutlineTwitter} />
             </div>
+            <btn onClick={routeChangeHome}>
             <MenuItem active text="Home" Icon={AiTwotoneHome} />
+            </btn>
+            
             <MenuItem text="Notifications" Icon={AiTwotoneBell} />
             <MenuItem text="Messages" Icon={AiTwotoneMail} />
             <MenuItem text="Saved" Icon={AiFillSave} />
             <MenuItem text="Profile" Icon={AiOutlineUser} />
             <div className="btns">
-                <button className="btn">
+                <button className="btn" onClick={routeChangeLogin}>
                     Sign In
                 </button>
-                <button className="btn">
+                <button className="btn" onClick={routeChangeRegister}>
                     Register
                 </button>
             </div>
