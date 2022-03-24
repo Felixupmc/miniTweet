@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './HomePage.css';
 import './Menu'
-import Main from './Main'
+import MainHome from './MainHome'
 import Menu from './Menu';
 import { Button  } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ function App() {
       <Menu />
 
 
-      <Main />
+      <MainHome />
 
     </div>
   );

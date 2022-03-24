@@ -1,6 +1,7 @@
 .tweetBox {
     padding: 10px;
     border-bottom: 5px solid var(--twitter-color);
+    
 }
 
 .tweetBox > form {
