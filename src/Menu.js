@@ -25,6 +25,10 @@ function Menu( props ){
         let path = "/"; 
         navigate(path);
     }
+    const routeChangeProfile = () =>{ 
+        let path = "/Profile"; 
+        navigate(path);
+    }
 
     return(
         <div className="menu">
@@ -32,13 +36,15 @@ function Menu( props ){
                 <MenuItem Icon={AiOutlineTwitter} />
             </div>
             <btn onClick={routeChangeHome}>
-            <MenuItem active text="Home" Icon={AiTwotoneHome} />
+                <MenuItem active text="Home" Icon={AiTwotoneHome} />
+            </btn>
+            <btn onClick={routeChangeProfile}>
+                <MenuItem text="Profile" Icon={AiOutlineUser} />
             </btn>
             
             <MenuItem text="Notifications" Icon={AiTwotoneBell} />
             <MenuItem text="Messages" Icon={AiTwotoneMail} />
             <MenuItem text="Saved" Icon={AiFillSave} />
-            <MenuItem text="Profile" Icon={AiOutlineUser} />
             <div className="btns">
                 <button className="btn" onClick={routeChangeLogin}>
                     Sign In

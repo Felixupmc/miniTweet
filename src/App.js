@@ -5,6 +5,7 @@ import HomePage from './HomePage.js'
 import LoginPage from './LoginPage.js';
 import RegisterPage from "./RegisterPage.js"
 import ErrorPage from "./ErrorPage.js"
+import ProfilePage from "./ProfilePage.js"
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/Register" element={<RegisterPage />} />
+        <Route path="/Profile" element={<ProfilePage />} />
 
 
         <Route path="*" element={<ErrorPage />} />
