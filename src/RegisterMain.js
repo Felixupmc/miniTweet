@@ -26,7 +26,7 @@ function Register () {
             <h2>Mot de passe</h2>
             <input placeholder="Créez votre mot de passe"  type="password" ></input>
 
-            <button className="btn" onClick={routeChangeLogin}>
+            <button className="btnLogin" onClick={routeChangeLogin}>
                 Inscription
             </button>
         

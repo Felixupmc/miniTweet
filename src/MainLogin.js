@@ -20,7 +20,7 @@ function MainLogin () {
         <h2>Password</h2>
         <input placeholder="123"  type="password" ></input>
 
-        <button className="btn" onClick={routeChangeLogin}>
+        <button className="btnLogin" onClick={routeChangeLogin}>
           Connexion
         </button>
 

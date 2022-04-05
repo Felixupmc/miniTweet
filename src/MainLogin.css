@@ -1,6 +1,6 @@
 
 .mainLogin {
-    flex: 0.6;
+    flex: 0.7;
     border-right: 1px solid var(--twitter-color);
     min-width: fit-content;
 
@@ -29,7 +29,7 @@
 }
 
 
-.btn {
+.btnLogin {
     background-color: var(--twitter-backround);
     border: none;
     color: black;
