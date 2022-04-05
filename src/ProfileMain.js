@@ -14,7 +14,7 @@ function ProfileMain() {
             {/* Header */}
         
             <Tabs>
-                <div label="Infos Perso">
+                <div label="Informations Personnelles">
                     <div className="info">
                         <div className="avatar">
                             <Avatar src="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg" />
@@ -26,11 +26,11 @@ function ProfileMain() {
                         <h5>19</h5>
                     </div>
                     <div className="info">
-                        <h4>Nombe d'amis : </h4>
+                        <h4>Followers : </h4>
                         <h5>3</h5>
                     </div>
                     <div className="info">
-                        <h4>Nombre de twits : </h4>
+                        <h4>Messages : </h4>
                         <h5>25</h5>
                     </div>
                 </div>

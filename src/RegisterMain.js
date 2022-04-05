@@ -15,19 +15,19 @@ function Register () {
         <div className="mainLogin">
 
             <h2>Nom</h2>
-            <input placeholder="Ex: toto"  type="text" ></input>
+            <input placeholder="Entrez votre nom"  type="text" ></input>
 
             <h2>Prenom</h2>
-            <input placeholder="Ex: toto"  type="text" ></input>
+            <input placeholder="Entrez votre prénom"  type="text" ></input>
 
-            <h2>UserName</h2>
-            <input placeholder="Ex: toto"  type="text" ></input>
+            <h2>Login</h2>
+            <input placeholder="Créez votre login"  type="text" ></input>
 
             <h2>Mot de passe</h2>
-            <input placeholder="Ex: 123.."  type="password" ></input>
+            <input placeholder="Créez votre mot de passe"  type="password" ></input>
 
             <button className="btn" onClick={routeChangeLogin}>
-                Register
+                Inscription
             </button>
         
         </div>

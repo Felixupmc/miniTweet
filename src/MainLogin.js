@@ -13,15 +13,17 @@ function MainLogin () {
   return (
     <div className="mainLogin">
 
-        <h2>UserName</h2>
-        <input placeholder="Ex: toto"  type="text" ></input>
+
+        <h2 className='top'>UserName</h2>
+        <input placeholder="Felix75"  type="text" ></input>
 
         <h2>Password</h2>
-        <input placeholder="Ex: 123.."  type="password" ></input>
+        <input placeholder="123"  type="password" ></input>
 
         <button className="btn" onClick={routeChangeLogin}>
-          Login
+          Connexion
         </button>
+
         
     </div>
   )

@@ -1,5 +1,6 @@
 import React from "react";
 import './Menu.css'
+import SearchBar from "./SearchBar"
 import {AiOutlineTwitter} from 'react-icons/ai'
 import {AiTwotoneHome} from 'react-icons/ai'
 import {AiTwotoneBell} from 'react-icons/ai'
@@ -32,8 +33,8 @@ function Menu( props ){
 
     return(
         <div className="menu">
-            <div className="icon">
-                <MenuItem Icon={AiOutlineTwitter} />
+            <div className="searchBar">
+                <SearchBar />
             </div>
             <btn onClick={routeChangeHome}>
                 <MenuItem active text="Home" Icon={AiTwotoneHome} />

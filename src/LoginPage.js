@@ -6,11 +6,14 @@ import MainLogin from "./MainLogin"
 function LoginPage () {
 
     return (
-        <div className="app">
-            <Menu />
+        
+            <div className="app" >
+                
+                <Menu />
 
-            <MainLogin />
-        </div>
+                <MainLogin />
+            </div>
+        
     )
 
     

@@ -2,17 +2,18 @@ import React from "react";
 import "./MainHome.css"
 import TweetBox from "./TweetBox"
 import Tweet from "./Tweet"
+import SearchBar from "./SearchBar"
 
 function MainHome() {
     return (
         <div className="Main">
             {/* Header */}
-            <div className="Main__header">
-                <h2>Home</h2>
-            </div>
+           
             
             {/* TweatBox */}
-            <TweetBox />
+            <div className="sticky">
+                <TweetBox />
+            </div>
 
             <Tweet />
             <Tweet />

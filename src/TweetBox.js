@@ -10,7 +10,7 @@ function TweetBox() {
                     <Avatar src="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg" />
                     <input placeholder="Que voulez-vous partager ?"  type="text" />
                 </div>
-                <button className="tweetButton">Tweet</button>
+                <button className="tweetButton">Poster</button>
             </form>
         </div>
 
