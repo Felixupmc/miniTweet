@@ -1,5 +1,5 @@
 import React from "react";
-import "./RegisterPage.css";
+import "./Page.css";
 import Menu from "./Menu"
 import { useNavigate } from "react-router-dom";
 

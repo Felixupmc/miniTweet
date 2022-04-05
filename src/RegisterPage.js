@@ -1,12 +1,12 @@
 import React from "react";
-import "./RegisterPage.css";
+import "./Page.css";
 import Menu from "./Menu"
 import RegisterMain from "./RegisterMain.js"
 
 function RegisterPage () {
 
     return (
-        <div className="login">
+        <div className="app">
             <Menu />
 
             <RegisterMain />

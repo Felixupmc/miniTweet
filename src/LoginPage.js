@@ -1,12 +1,12 @@
 import React from "react";
-import "./LoginPage.css";
+import "./Page.css";
 import Menu from "./Menu"
 import MainLogin from "./MainLogin"
 
 function LoginPage () {
 
     return (
-        <div className="login">
+        <div className="app">
             <Menu />
 
             <MainLogin />
