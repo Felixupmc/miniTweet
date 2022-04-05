@@ -39,14 +39,7 @@
     scrollbar-width: none;
 }
 
-.info {
-    display: flex;
-    align-items: center;
-}
 
-.info > h5 {
-    margin-left: 15px;
-}
 
 .sticky {
     position: sticky;

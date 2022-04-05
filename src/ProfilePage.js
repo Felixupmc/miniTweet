@@ -7,7 +7,7 @@ import ProfileMain from "./ProfileMain.js"
 function ProfilePage() {
     return (
         <div className="app">
-            <Menu />
+            <Menu activ="1"/>
 
             <ProfileMain />
 

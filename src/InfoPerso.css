@@ -1,0 +1,9 @@
+.info {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.info > h5 {
+    margin-left: 15px;
+}

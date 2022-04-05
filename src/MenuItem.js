@@ -3,7 +3,7 @@ import './MenuItem.css'
 
 function MenuItem( props ) {
   return (
-    <div className={`MenuItem ${props.active && 'MenuItem--active'}` } >
+    <div className={`MenuItem ${(props.active==props.id) && 'MenuItem--active'}` } >
         <div className='Icon'>
           <props.Icon color="#1DA1F2" fontSize="2rem"/>
         </div>

@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="app">
-      <Menu />
+      <Menu activ="0"/>
 
 
       <MainHome />

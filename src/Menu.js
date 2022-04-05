@@ -14,9 +14,12 @@ import { useNavigate } from "react-router-dom";
 function Menu( props ){
 
     let navigate = useNavigate(); 
+    const activated = props.activ
+
     const routeChangeLogin = () =>{ 
         let path = "/Login"; 
         navigate(path);
+        activated = "0"
     }
     const routeChangeRegister = () =>{ 
         let path = "/Register"; 
@@ -29,6 +32,7 @@ function Menu( props ){
     const routeChangeProfile = () =>{ 
         let path = "/Profile"; 
         navigate(path);
+        activated = "1"
     }
 
     return(
@@ -37,15 +41,15 @@ function Menu( props ){
                 <SearchBar />
             </div>
             <btn onClick={routeChangeHome}>
-                <MenuItem active text="Home" Icon={AiTwotoneHome} />
+                <MenuItem id="0" active={activated} text="Home" Icon={AiTwotoneHome} />
             </btn>
             <btn onClick={routeChangeProfile}>
-                <MenuItem text="Profile" Icon={AiOutlineUser} />
+                <MenuItem id="1" active={activated} text="Profile" Icon={AiOutlineUser} />
             </btn>
             
-            <MenuItem text="Notifications" Icon={AiTwotoneBell} />
-            <MenuItem text="Messages" Icon={AiTwotoneMail} />
-            <MenuItem text="Saved" Icon={AiFillSave} />
+            <MenuItem id="2" active={activated} text="Notifications" Icon={AiTwotoneBell} />
+            <MenuItem id="3" active={activated} text="Messages" Icon={AiTwotoneMail} />
+            <MenuItem id="4" active={activated} text="Saved" Icon={AiFillSave} />
             <div className="btns">
                 <button className="btn" onClick={routeChangeLogin}>
                     Sign In
