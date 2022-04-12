@@ -13,12 +13,13 @@ function init(db) {
         next();
     });
     const users = new Users.default(db);
+
     router.post("/user/login", async (req, res) => {
         try {
-            const { login, password } = req.body;
+            const { login, password } = req.body; //on decoupe le coprs de la requete //
             // Erreur sur la requête HTTP
             if (!login || !password) {
-                res.status(400).json({
+                res.status(400).json({ //il renvoie une erreur dans le res //
                     status: 400,
                     "message": "Requête invalide : login et password nécessaires"
                 });
@@ -34,7 +35,7 @@ function init(db) {
             let userid = await users.checkpassword(login, password);
             if (userid) {
                 // Avec middleware express-session
-                req.session.regenerate(function (err) {
+                req.session.regenerate(function (err) { 
                     if (err) {
                         res.status(500).json({
                             status: 500,
@@ -91,7 +92,22 @@ function init(db) {
         if (!login || !password || !lastname || !firstname) {
             res.status(400).send("Missing fields");
         } else {
-            users.create(login, password, lastname, firstname)
+            users.create({login, password, lastname, firstname})
+                .then((user_id) => res.status(201).send({ id: user_id }))
+                .catch((err) => res.status(500).send(err));
+        }
+    });
+
+//===========================================================================================================
+
+    router.put("/messages", (req, res) => {
+        console.log("HEYYYOOOOOOOOOOOOOOOOOOO")
+
+        const { login, texte } = req.body;
+        if (!login || !texte) {
+            res.status(400).send("Missing fields");
+        } else {
+            messages.createMessage({login, texte})
                 .then((user_id) => res.status(201).send({ id: user_id }))
                 .catch((err) => res.status(500).send(err));
         }

@@ -9,11 +9,13 @@ class users {
     return new Promise((resolve, reject) => {
      
       if(false) {
-        
         reject();
       } else {
-        resolve(message);
         this.db.users.insert(user) //On insert le user dans la base //
+        .then(() => {
+          resolve(user);
+        })
+        
       }
     });
   }

@@ -1,14 +1,12 @@
 const path = require('path');
 const api = require('./api.js');
 var DataStore = require ('nedb')
+var cors = require("cors")
 
 db = {}
-db.friends = new DataStore()
-db.friends.loadDataBase()
-db.messages = new DataStore()
-db.messages.loadDataBase()
-db.users = new DataStore()
-db.users.loadDataBase()
+db.friends = new DataStore({ filename: './friend', autoload: true })
+db.messages = new DataStore({ filename: './messages', autoload: true })
+db.users = new DataStore({ filename: './users', autoload: true })
 
 //==============================================================================================================
 // 1 - connecter base de donnée
@@ -41,11 +39,13 @@ const app = express()
 api_1 = require("./api.js");
 const session = require("express-session");
 
+app.use(cors())
+
 app.use(session({
     secret: "technoweb rocks"
 }));
 
-app.use('/api', api.default());
+app.use('/', api.default(db));
 
 // Démarre le serveur
 app.on('close', () => {

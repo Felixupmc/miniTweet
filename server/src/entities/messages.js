@@ -9,9 +9,9 @@ class messages{
             if(err) {
                 reject();
             } else {
-                resolve(message);
                 console.log(message) //On affiche le message //
                 this.db.messages.insert(message) //On insère le message dans la bd //
+                resolve(message);
             }
         });
         
@@ -27,7 +27,7 @@ class messages{
                     resolve(docs)
                     console.log(messages)
                 }
-            }
+            })
         });
     }
 }      

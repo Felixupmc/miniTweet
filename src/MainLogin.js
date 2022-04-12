@@ -1,11 +1,16 @@
 import React from 'react'
 import './MainLogin.css';
 import { useNavigate } from "react-router-dom";
+const axios = require('axios')
 
 function MainLogin () {
 
   let navigate = useNavigate(); 
     const routeChangeLogin = () =>{ 
+        axios.post("http://localhost:8999/user/login", {
+          login : "toto5000" ,
+          password : "50000001"
+        })
         let path = "/"; 
         navigate(path);
     }
