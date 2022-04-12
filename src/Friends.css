@@ -1,0 +1,5 @@
+.corp {
+    display: flex;
+    align-items: center;
+    /*border: 1px solid var(--twitter-color);*/
+}

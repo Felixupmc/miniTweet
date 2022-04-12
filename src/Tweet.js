@@ -14,7 +14,7 @@ function Tweet (props) {
                     <Avatar src="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg" />
                 </div>
                 <div className="titre">
-                    <h3>Fnifnou</h3>
+                    <h3>Félix </h3>
                 </div>
             </div>
             <div className="text">

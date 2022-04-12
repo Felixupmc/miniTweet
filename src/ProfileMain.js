@@ -4,6 +4,7 @@ import TweetBox from "./TweetBox"
 import Tweet from "./Tweet"
 import Tabs from "./Tabs";
 import InfoPerso from "./InfoPerso"
+import Friend from "./Friend.js"
 
 function ProfileMain() {
     return (
@@ -13,7 +14,7 @@ function ProfileMain() {
             </div>
             {/* Header */}
         
-            <Tabs>
+            <Tabs className="sticky">
                 <div label="Informations Personnelles">
                     <InfoPerso />
                 </div>
@@ -34,7 +35,8 @@ function ProfileMain() {
                 </div>
                 
                 <div label="Amies">
-                    See ya later, <em>Alligator</em>!
+                    <Friend />
+                    <Friend />
                 </div>
             </Tabs>
 
