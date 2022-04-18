@@ -102,7 +102,7 @@ function init(db) {
 
     router.put("/messages", (req, res) => {
         console.log("HEYYYOOOOOOOOOOOOOOOOOOO")
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         const { login, texte } = req.body;
         if (!login || !texte) {
             res.status(400).send("Missing fields");
