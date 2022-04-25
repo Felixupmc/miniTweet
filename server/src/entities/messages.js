@@ -5,31 +5,33 @@ class messages{
     }
   
     createMessage(message){
+        console.log("HELLOO : createMessage se lance")
         return new Promise((resolve, reject) => {
-            if(err) {
-                reject();
+            if(false) {
+              reject();
             } else {
-                console.log(message) //On affiche le message //
-                this.db.messages.insert(message) //On insère le message dans la bd //
-                resolve(message);
+                this.db.messages.insert(message) //On insert le message dans la base //
+                
+              
             }
-        });
+          });
         
     }
 
-    getMessages(messages){ //On retourne la liste de nos propres messages //
+    getMessages(){ //On retourne la liste de nos propres messages //
+        console.log("HELLOO : getMessages se lance")
         return new Promise((resolve, reject) => {
-            this.db.messages.find({}, function(err,docs){
-                if(err){
-                    reject(err)
-                }
-                else{
-                    resolve(docs)
-                    console.log(messages)
-                }
-            })
-        });
+            this.db.messages.find({}).sort({"createdAt":-1}).exec( (err, docs) => {
+             if (err) {
+              reject(err);
+             }
+         
+             resolve(docs);
+            });
+           });
+        
     }
-}      
+}
+
 exports.default = messages
   

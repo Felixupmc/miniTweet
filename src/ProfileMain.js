@@ -21,10 +21,7 @@ function ProfileMain() {
 
                 <div label="Messages">
                     <Tweet />
-                    <Tweet />
-                    <Tweet />
-                    <Tweet />
-                    <Tweet />
+                    
                     {/* postList */}
                     {/* postList */}
                     {/* postList */}

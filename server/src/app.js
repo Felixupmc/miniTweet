@@ -5,9 +5,10 @@ var cors = require("cors")
 
 db = {}
 db.friends = new DataStore({ filename: './friend', autoload: true })
-db.messages = new DataStore({ filename: './messages', autoload: true })
+db.messages = new DataStore({ filename: './messages', autoload: true, timestampData : true })
 db.users = new DataStore({ filename: './users', autoload: true })
 
+/*
 //==============================================================================================================
 // 1 - connecter base de donnée
 // 2 - creer objet react avec une instance de la base de donnée
@@ -24,12 +25,13 @@ var msg = { text: 'world'
                };
 
 db.messages.insert(msg, function (err, newDoc) {   // Callback is optional
+
   // newDoc is the newly inserted document, including its _id
   // newDoc has no key called notToBeSaved since its value was undefined
 });
 
 //==============================================================================================================
-
+*/
 
 const basedir = path.normalize(path.dirname(__dirname));
 console.debug(`Base directory: ${basedir}`);
