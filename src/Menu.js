@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import './Menu.css'
 import SearchBar from "./SearchBar"
 import {AiOutlineTwitter} from 'react-icons/ai'
@@ -10,8 +10,11 @@ import {AiOutlineUser} from 'react-icons/ai'
 import MenuItem from "./MenuItem"
 
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 function Menu( props ){
+
+    const {user,setUser} = useContext(UserContext)
 
     let navigate = useNavigate(); 
     const activated = props.activ
@@ -35,6 +38,13 @@ function Menu( props ){
         activated = "1"
     }
 
+    const deconnexion = () =>{
+        setUser(null)
+        let path = "/"; 
+        navigate(path);
+        activated = "0"
+    }
+
     return(
         <div className="menu">
             <div className="searchBar">
@@ -51,12 +61,19 @@ function Menu( props ){
             <MenuItem id="3" active={activated} text="Messages" Icon={AiTwotoneMail} />
             <MenuItem id="4" active={activated} text="Saved" Icon={AiFillSave} />
             <div className="btns">
-                <button className="btn" onClick={routeChangeLogin}>
-                    Sign In
-                </button>
+                {user ? (
+                    <button className="btn" onClick={deconnexion}>Déconnexion</button>
+                ) : (
+                    <button className="btn" onClick={routeChangeLogin}>
+                        Sign In
+                    </button>
+                )}
                 <button className="btn" onClick={routeChangeRegister}>
                     Register
                 </button>
+            </div>
+            <div>
+                {user}
             </div>
 
         </div>
