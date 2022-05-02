@@ -39,44 +39,42 @@ function init(db) {
                     return;
                 }
 
-
-                if(! await users.exists(login)) {
-                    res.status(450).json({
+                const tmmmp = false
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// login ou mdp manquant : OK
+// login existe et mdp ok ou ko : OK
+// login pas existant crash
+                await users.exists(login)
+                .catch(() => {
+                    res.status(456).json({
                         status: 401,
                         message: "Utilisateur inconnu"
                     });
                     return;
-                }
+                })
 
-                
-                let userid = await users.checkpassword(login, password);
-                if (userid) {
-                    // Avec middleware express-session
-                    req.session.regenerate(function (err) { 
-                        if (err) {
-                            res.status(500).json({
-                                status: 500,
-                                message: "Erreur interne"
-                            });
-                        }
-                        else {
-                            // C'est bon, nouvelle session créée
-                            req.session.userid = userid;
-                            res.status(200).json({
-                                status: 200,
-                                message: "Login et mot de passe accepté"
-                            });
-                        }
+                await users.checkpassword(login, password)
+                .then(() => {
+                    //TOUT EST OK ON PEUT LOGIN LE USER
+                    console.log("users.checkpassword")
+                    console.log("GOOD PASSWOOOORD")
+                    res.status(201).send({login:login })
+                    return;
+                })
+                .catch(() => {
+                    // Faux login : destruction de la session et erreur
+                    console.log("BAD PASSWOOOORD")
+                    req.session.destroy((err) => { });
+                    res.status(452).json({
+                        status: 403,
+                        message: "login et/ou le mot de passe invalide(s)"
                     });
                     return;
-                }
-                // Faux login : destruction de la session et erreur
-                req.session.destroy((err) => { });
-                res.status(403).json({
-                    status: 403,
-                    message: "login et/ou le mot de passe invalide(s)"
-                });
-                return;
+                })
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                
             }
             catch (e) {
                 // Toute autre erreur

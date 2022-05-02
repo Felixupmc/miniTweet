@@ -43,24 +43,50 @@ class users {
   }
 
   exists(userLogin) {
-    this.db.users.find({"login":userLogin},(err, docs) => {
+    return new Promise((resolve, reject) => {
+      this.db.users.find({"login":userLogin},(err, docs) => {
       if (err) {
         console.log("Erreur dans users.exists !!!!!!!")
-        return false;
+        reject()
       }
       console.log(docs)
       if(docs.length===0){
         console.log("utilisateur PAS PAS PAS trouvé dans users.exists ")
-        return false
+        reject()
       } else {
         console.log("utilisateur trouvé dans users.exists ")
-        return true
+        resolve()
       }
           
       });
+    });
+  }
+
+  checkpassword(login, password) {
+    return new Promise((resolve, reject) => {
+
+      this.db.users.find({"login":login,"password":password},(err, docs) => {
+        if (err) {
+          console.log("Erreur dans users.checkpassword !!!!!!!")
+          reject()
+        }
+        console.log("login <=> password trouvé :")
+        console.log(docs)
+        if(docs.length===0){
+          console.log("docs.password===password FAUX")
+          reject()
+        } else {
+          console.log("docs.password===password VRAI")
+          resolve()
+          
+        }
+      })
+    });
   }
 
   
+
+
 
 }
 
