@@ -23,10 +23,10 @@ function init(db) {
         next();
     });
 
-    router.post("/user/login", async (req, res) => {
 
-            console.log("heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-
+    router
+        .route("/user/login")
+        .put(async (req, res) => {
             try {
                 const { login, password } = req.body; //on decoupe le coprs de la requete //
 
@@ -38,13 +38,17 @@ function init(db) {
                     });
                     return;
                 }
-                if(! await Users.exists(login)) {
+
+
+                if(! await users.exists(login)) {
                     res.status(450).json({
                         status: 401,
                         message: "Utilisateur inconnu"
                     });
                     return;
                 }
+
+                
                 let userid = await users.checkpassword(login, password);
                 if (userid) {
                     // Avec middleware express-session
@@ -82,6 +86,7 @@ function init(db) {
                     details: (e || "Erreur inconnue").toString()
                 });
             }
+
     });
 
     router
@@ -113,7 +118,7 @@ function init(db) {
 
 //===========================================================================================================
 
-    router.put("/messages", (req, res) => {
+    router.put("/messages/poster", (req, res) => {
         ////////////////////////////////////////////////////////////Pas sur pour la promesse . . . . 
         return new Promise((resolve, reject) => {
 

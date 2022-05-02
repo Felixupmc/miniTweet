@@ -42,15 +42,22 @@ class users {
     });
   }
 
-  async exists(user) {
-    return new Promise((resolve, reject) => {
-      if(false) {
-        reject();
-      } else {
-        resolve(true);
-        console.log(user)
+  exists(userLogin) {
+    this.db.users.find({"login":userLogin},(err, docs) => {
+      if (err) {
+        console.log("Erreur dans users.exists !!!!!!!")
+        return false;
       }
-    });
+      console.log(docs)
+      if(docs.length===0){
+        console.log("utilisateur PAS PAS PAS trouvé dans users.exists ")
+        return false
+      } else {
+        console.log("utilisateur trouvé dans users.exists ")
+        return true
+      }
+          
+      });
   }
 
   

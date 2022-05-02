@@ -11,25 +11,30 @@ function MainLogin () {
   const [mdp,setMdp] = useState('');
 
   let navigate = useNavigate(); 
-  const routeChangeLogin = async () =>{ 
-      axios.post("http://localhost:8999/user/login", {
-        login : login ,
-        password : mdp
+
+  const routeChangeLogin = () =>{ 
+    return new Promise((resolve, reject) => {
+
+      axios.put("http://localhost:4000/user/login",{ 
+        login: login,
+        password: mdp,
       })
         .then((resp) => {
           setUser(login)
           let path = "/"; 
           navigate(path);
-          return resp
+          resolve (resp)
         })
         .catch((err) => {
+          console.log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
           setUser(login)
-          let path = "/"; 
+          let path = "/Register"; 
           navigate(path);
-          return err
+          reject (err)
         })
-      
+    })
   }
+  
 
   return (
     <div className="mainLogin">

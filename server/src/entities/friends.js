@@ -41,7 +41,7 @@ class friends {
                     resolve(docs.size() > 0)
                 }
             })
-        }
+        });
 
     }
 

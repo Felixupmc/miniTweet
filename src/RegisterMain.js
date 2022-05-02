@@ -14,7 +14,7 @@ function Register () {
             lastname : nom, 
             firstname : prenom
         })
-        let path = "/"; 
+        let path = "/Login"; 
         navigate(path);
     }
 

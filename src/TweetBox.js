@@ -11,8 +11,8 @@ function TweetBox() {
     
     const clique = async (e) => {
         e.preventDefault();
-        poster()
-        .then((alors) => faitLe(alors))
+        const tmp = await poster()
+        faitLe()
     }
     
     const faitLe = (alors) => {
@@ -26,7 +26,7 @@ function TweetBox() {
     
     const poster = async () =>{ 
         return new Promise((resolve, reject) => {
-            axios.put("http://localhost:4000/messages",{ 
+            axios.put("http://localhost:4000/messages/poster",{ 
                 login : login,
                 texte : texte,
                 imgUrl : imgUrl,
