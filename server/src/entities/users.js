@@ -1,3 +1,4 @@
+const { isRejected } = require("q");
 
 
 class users {
@@ -8,15 +9,15 @@ class users {
   create(user) {
     return new Promise((resolve, reject) => {
      
-      if(false) {
-        reject();
-      } else {
+      console.log("create(user)")
+      this.exists(user.login)
+      .then(() => {
+        reject()
+      })
+      .catch(() => {
         this.db.users.insert(user) //On insert le user dans la base //
-        .then(() => {
-          resolve(user);
-        })
-        
-      }
+        resolve(user);
+      })
     });
   }
 
@@ -45,24 +46,25 @@ class users {
   exists(userLogin) {
     return new Promise((resolve, reject) => {
       this.db.users.find({"login":userLogin},(err, docs) => {
-      if (err) {
-        console.log("Erreur dans users.exists !!!!!!!")
-        reject()
-      }
-      console.log(docs)
-      if(docs.length===0){
-        console.log("utilisateur PAS PAS PAS trouvé dans users.exists ")
-        reject()
-      } else {
-        console.log("utilisateur trouvé dans users.exists ")
-        resolve()
-      }
+        if (err) {
+          console.log("Erreur dans exists !!!!!!!")
+          reject()
+        }
+        console.log("login trouvé :")
+        console.log(docs)
+        if(docs.length===0){
+          console.log("pas d'utilisateur trouvé")
+          reject()
+        } else {
+          console.log("utilisateur trouvé !")
+          resolve()
           
-      });
+        }
+      })
     });
   }
 
-  checkpassword(login, password) {
+  checkpasswordAndLogin(login, password) {
     return new Promise((resolve, reject) => {
 
       this.db.users.find({"login":login,"password":password},(err, docs) => {

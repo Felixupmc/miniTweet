@@ -39,39 +39,26 @@ function init(db) {
                     return;
                 }
 
-                const tmmmp = false
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// login ou mdp manquant : OK
-// login existe et mdp ok ou ko : OK
-// login pas existant crash
-                await users.exists(login)
-                .catch(() => {
-                    res.status(456).json({
-                        status: 401,
-                        message: "Utilisateur inconnu"
-                    });
-                    return;
-                })
-
-                await users.checkpassword(login, password)
-                .then(() => {
-                    //TOUT EST OK ON PEUT LOGIN LE USER
-                    console.log("users.checkpassword")
-                    console.log("GOOD PASSWOOOORD")
-                    res.status(201).send({login:login })
-                    return;
-                })
-                .catch(() => {
-                    // Faux login : destruction de la session et erreur
-                    console.log("BAD PASSWOOOORD")
-                    req.session.destroy((err) => { });
-                    res.status(452).json({
-                        status: 403,
-                        message: "login et/ou le mot de passe invalide(s)"
-                    });
-                    return;
-                })
+                
+                await users.checkpasswordAndLogin(login, password)
+                    .then(() => {
+                        //TOUT EST OK ON PEUT LOGIN LE USER
+                        console.log("users.checkpassword")
+                        console.log("GOOD PASSWOOOORD")
+                        res.status(201).send({login:login })
+                        return;
+                    })
+                    .catch(() => {
+                        // Faux login : destruction de la session et erreur
+                        console.log("BAD PASSWOOOORD")
+                        req.session.destroy((err) => { });
+                        res.status(452).json({
+                            status: 403,
+                            message: "login et/ou le mot de passe invalide(s)"
+                        });
+                        return;
+                    })
+                
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 
@@ -109,8 +96,14 @@ function init(db) {
             res.status(400).send("Missing fields");
         } else {
             users.create({login, password, lastname, firstname})
-                .then((user_id) => res.status(201).send({ id: user_id }))
-                .catch((err) => res.status(500).send(err));
+                .then((user_id) => {
+                    console.log("user a été ajouté !")
+                    res.status(201).send({ id: user_id })
+                })
+                .catch((err) => {
+                    console.log("user with same login allready exists")
+                    res.status(501).send(err);
+                })
         }
     });
 
