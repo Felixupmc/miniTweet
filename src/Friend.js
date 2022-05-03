@@ -14,16 +14,16 @@ function Friends (props) {
 
     return (
         
-        <div className="corp">
-            <button onClick={clique}>
-                <div className="avatar">
-                    <Avatar src="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg" />
-                </div>
-                <div className="titre">
-                    <h3>Félix</h3>
-                </div>
-            </button>
-        </div>
+        <button onClick={clique} className="amiClicable">
+            <div className="corp">
+                    <div className="avatar">
+                        <Avatar src={props.avatar} />
+                    </div>
+                    <div className="titre">
+                        <h3>{props.login}</h3>
+                    </div>
+            </div>
+        </button>
         
     )
 }

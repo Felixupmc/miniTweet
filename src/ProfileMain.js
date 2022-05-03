@@ -32,8 +32,8 @@ function ProfileMain() {
                 </div>
                 
                 <div label="Amies">
-                    <Friend />
-                    <Friend />
+                    <Friend login="kenzz" avatar="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg"/>
+                    <Friend login="felzz" avatar="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg"/>
                 </div>
             </Tabs>
 

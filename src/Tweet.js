@@ -2,6 +2,8 @@ import React from "react";
 import "./Tweet.css";
 import {Avatar} from "@material-ui/core";
 import {AiFillSave,AiFillLike,AiFillDislike} from 'react-icons/ai'
+import Friend from "./Friend.js"
+
 const axios = require('axios')
 
 
@@ -25,13 +27,8 @@ class Tweet extends React.Component {
         return (
             this.state.messages.map(message =>
                 <div className="Tweet">
-                <div className="header">
-                        <div className="avatar">
-                            <Avatar src="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg" />
-                        </div>
-                        <div className="titre">
-                            <h3>{message.login} </h3>
-                        </div>
+                    <div className="header">
+                        <Friend login={message.login} avatar="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg"/>
                     </div>
                     <div className="text">
                         {message.texte}
