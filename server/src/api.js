@@ -160,7 +160,6 @@ function init(db) {
             try {
                 messages.getMessages()
                 .then((message) => {
-                    console.log(message)
                     res.status(201).send(message)
                 })
                 .catch((err) => {

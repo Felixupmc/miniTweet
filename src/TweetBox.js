@@ -1,16 +1,19 @@
-import React,{ useState } from "react";
+import React,{ useContext, useState } from "react";
 import "./TweetBox.css";
 import {Avatar} from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 const axios = require('axios')
 
 function TweetBox() {
 
     let navigate = useNavigate(); 
-    
+    const {user,setUser} = useContext(UserContext)
+
     const clique = async (e) => {
         e.preventDefault();
+        setLogin(u.login)
         const tmp = await poster()
         faitLe()
     }
@@ -36,7 +39,9 @@ function TweetBox() {
         
     }
 
-    const [login,setLogin] = useState('totoPourLinstant');
+    const u = axios.get("http://localhost:4000/user", {login : user} )
+
+    const [login,setLogin] = useState('pasconnecté');
     const [texte,setTexte] = useState('');
     const [imgUrl,setimgUrl] = useState('');
 
