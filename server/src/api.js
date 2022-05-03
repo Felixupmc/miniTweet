@@ -60,11 +60,7 @@ function init(db) {
                         return;
                     })
                 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                
-            }
-            catch (e) {
+            } catch (e) {
                 // Toute autre erreur
                 res.status(500).json({
                     status: 500,
@@ -108,30 +104,31 @@ function init(db) {
         }
     });
 
-    router.get("/user", (req, res) => {
-        const { login } = req.body;
-        try {
-            user.get({login})
-            .then((u) => {
-                console.log(u)
-                res.status(201).send(u)
-            })
-            .catch((err) => {
-                console.log("HELLOO : messages.getMessages() n'a pas fonctionné")
-                res.sendStatus(406);
-            })
-        }
-        catch (e) {
-            console.log("HELLOO00000")
+    router.post("/getUser", (req, res) => {
+        return new Promise((resolve, reject) => {
 
-            res.status(512).send(e);
-        }
+            console.log("HELLOO : get /user  se lance")
+            const { login } = req.body;
+            console.log({ login })
+            if (!login) {
+                console.log("err Missing fields dans get/user" )
+                res.status(406).send("Missing fields");
+            } else {
+                users.get(login)
+                    .then((u) => {
+                        console.log("post/getUser réussit avec user trouvé de login : ")
+                        console.log(u)
+                        resolve(u)
+                    })
+                    .catch((err) => reject(res.status(500).send(err)));
+            }
+        })
+        
     } )
 
 //===========================================================================================================
 
     router.put("/messages/poster", (req, res) => {
-        ////////////////////////////////////////////////////////////Pas sur pour la promesse . . . . 
         return new Promise((resolve, reject) => {
 
             console.log("HELLOO : router.put(/messages se lance")

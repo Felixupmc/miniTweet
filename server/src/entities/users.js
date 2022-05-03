@@ -28,14 +28,14 @@ class users {
           console.log("Erreur dans get user !!!!!!!")
           reject()
         }
-        console.log("login trouvé :")
+        console.log("user trouvé avec login" + userid+ ":")
         console.log(docs)
         if(docs.length===0){
           console.log("pas d'utilisateur trouvé")
           reject()
         } else {
-          console.log("utilisateur trouvé !")
-          resolve(docs)
+          console.log("utilisateur trouvé !" )
+          resolve(docs[0])
           
         }
       })

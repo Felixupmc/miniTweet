@@ -41,11 +41,12 @@ function init(db) {
 
                 
                 await users.checkpasswordAndLogin(login, password)
-                    .then(() => {
+                    .then((resp) => {
                         //TOUT EST OK ON PEUT LOGIN LE USER
                         console.log("users.checkpassword")
                         console.log("GOOD PASSWOOOORD")
-                        res.status(201).send({login:login })
+                        console.log(resp)
+                        res.status(201).send(resp)
                         return;
                     })
                     .catch(() => {
@@ -91,11 +92,11 @@ function init(db) {
         .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
 
     router.put("/user", (req, res) => {
-        const { login, password, lastname, firstname } = req.body;
-        if (!login || !password || !lastname || !firstname) {
+        const { login, password, lastname, firstname, avatar } = req.body;
+        if (!login || !password || !lastname || !firstname || !avatar) {
             res.status(400).send("Missing fields");
         } else {
-            users.create({login, password, lastname, firstname})
+            users.create({login, password, lastname, firstname, avatar})
                 .then((user_id) => {
                     console.log("user a été ajouté !")
                     res.status(201).send({ id: user_id })
@@ -107,6 +108,26 @@ function init(db) {
         }
     });
 
+    router.get("/user", (req, res) => {
+        const { login } = req.body;
+        try {
+            user.get({login})
+            .then((u) => {
+                console.log(u)
+                res.status(201).send(u)
+            })
+            .catch((err) => {
+                console.log("HELLOO : messages.getMessages() n'a pas fonctionné")
+                res.sendStatus(406);
+            })
+        }
+        catch (e) {
+            console.log("HELLOO00000")
+
+            res.status(512).send(e);
+        }
+    } )
+
 //===========================================================================================================
 
     router.put("/messages/poster", (req, res) => {
@@ -115,12 +136,14 @@ function init(db) {
 
             console.log("HELLOO : router.put(/messages se lance")
             const { login, texte ,imgUrl } = req.body;
+            const likes = 0
+            const dislikes = 0
             console.log({ login, texte ,imgUrl })
             if (!login || !texte || !imgUrl) {
                 res.status(406).send("Missing fields");
             } else {
                 console.log("ca passe ou pas?")
-                messages.createMessage({login, texte,imgUrl})
+                messages.createMessage({login, texte,imgUrl,likes,dislikes})
                     .then((user_id) => resolve(res.status(201).send({ id: user_id })))
                     .catch((err) => reject(res.status(500).send(err)));
             }
@@ -135,27 +158,14 @@ function init(db) {
         .route("/messages")
         .get(async (req, res) => {
             try {
-
                 messages.getMessages()
-                .then((message) => {res.status(201).send(message)})
+                .then((message) => {
+                    res.status(201).send(message)
+                })
                 .catch((err) => {
                     console.log("HELLOO : messages.getMessages() n'a pas fonctionné")
                     res.sendStatus(406);
                 })
-
-                /*
-                const messages = await messages.getMessages()
-                if (!messages){
-                    const tp = await console.log("TRAUMAT")
-
-                    res.sendStatus(404);
-                }
-                else {
-                    const tp = await console.log("TRAUMAT")
-
-                    res.send(messages);
-                }
-                */
             }
             catch (e) {
                 console.log("HELLOO00000")

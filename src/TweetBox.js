@@ -11,11 +11,22 @@ function TweetBox() {
     let navigate = useNavigate(); 
     const {user,setUser} = useContext(UserContext)
 
+    const setlog = async () =>{ 
+        return new Promise(async (resolve, reject) => {
+            await setLogin(user)
+            resolve()
+        });
+        
+    }
+
     const clique = async (e) => {
         e.preventDefault();
-        setLogin(u.login)
-        const tmp = await poster()
-        faitLe()
+        setlog()
+        .then(async () => {
+            const tmp = await poster()
+            faitLe()
+        })
+        
     }
     
     const faitLe = (alors) => {
@@ -39,9 +50,17 @@ function TweetBox() {
         
     }
 
-    const u = axios.get("http://localhost:4000/user", {login : user} )
+    const getAvatar = () => {
+        axios.post("http://localhost:4000/getUser",{ 
+            login : user,
+        })
+        .then((res) => {
+            return res.avatar
+        })
+    }
 
-    const [login,setLogin] = useState('pasconnecté');
+
+    const [login,setLogin] = useState(user);
     const [texte,setTexte] = useState('');
     const [imgUrl,setimgUrl] = useState('');
 
@@ -49,7 +68,7 @@ function TweetBox() {
         <div>
             <form className="tweetBox">
                 <div className="tweetBox__input">
-                    <Avatar src="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg" />
+                    <Avatar src={getAvatar} />
                     <input placeholder="Que voulez-vous partager ?"  type="text" value={texte} onChange={(e) => {setTexte(e.target.value)}}/>
                 </div>
                 <div className="imgPLUSbtn">
