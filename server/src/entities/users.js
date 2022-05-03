@@ -23,23 +23,22 @@ class users {
 
   get(userid) {
     return new Promise((resolve, reject) => {
-      const user = {
-         login: "pikachu",
-         password: "1234",
-         lastname: "chu",
-         firstname: "pika"
-      }; // À remplacer par une requête bd
-
-      if(false) {
-        //erreur
-        reject();
-      } else {
-        if(userid == 1) {
-          resolve(user);
-        } else {
-          resolve(null);
+      this.db.users.find({"login":userid},(err, docs) => {
+        if (err) {
+          console.log("Erreur dans get user !!!!!!!")
+          reject()
         }
-      }
+        console.log("login trouvé :")
+        console.log(docs)
+        if(docs.length===0){
+          console.log("pas d'utilisateur trouvé")
+          reject()
+        } else {
+          console.log("utilisateur trouvé !")
+          resolve(docs)
+          
+        }
+      })
     });
   }
 
@@ -79,7 +78,7 @@ class users {
           reject()
         } else {
           console.log("docs.password===password VRAI")
-          resolve()
+          resolve(docs)
           
         }
       })

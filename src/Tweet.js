@@ -40,9 +40,15 @@ class Tweet extends React.Component {
                         <button className="btn1">
                             <AiFillLike color="#1DA1F2" fontSize="2rem" />
                         </button>
+                        <div>
+                            {message.likes}
+                        </div>
                         <button className="btn1">
                             <AiFillDislike color="#1DA1F2" fontSize="2rem" />
                         </button>
+                        <div>
+                            {message.dislikes}
+                        </div>
                         <button className="btn1">
                             <AiFillSave color="#1DA1F2" fontSize="2rem" />
                         </button>

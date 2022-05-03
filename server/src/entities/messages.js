@@ -25,7 +25,6 @@ class messages{
              if (err) {
               reject(err);
              }
-         
              resolve(docs);
             });
            });

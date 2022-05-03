@@ -12,7 +12,8 @@ function Register () {
             login : login,
             password : mdp, 
             lastname : nom, 
-            firstname : prenom
+            firstname : prenom,
+            avatar : avatar
         })
         let path = "/Login"; 
         navigate(path);
@@ -22,6 +23,7 @@ function Register () {
     const [nom,setNom] = useState('');
     const [prenom,setPrenom] = useState('');
     const [mdp,setMdp] = useState('');
+    const [avatar,setAvatar] = useState('');
 
 
     return (
@@ -38,6 +40,9 @@ function Register () {
 
             <h2>Mot de passe</h2>
             <input placeholder="Créez votre mot de passe"  type="password" value={mdp} onChange={(e) => {setMdp(e.target.value)}}></input>
+
+            <h2>Photo de profile</h2>
+            <input placeholder="URL d'une photo"  type="text" value={avatar} onChange={(e) => {setAvatar(e.target.value)}}></input>
 
             <button className="btnLogin" onClick={routeChangeLogin}>
                 Inscription

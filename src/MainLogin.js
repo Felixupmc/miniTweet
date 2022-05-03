@@ -18,8 +18,9 @@ function MainLogin () {
       login: login,
       password: mdp,
     })
-      .then((resp) => {
-        setUser(login)
+      .then((res) => {
+        const u = res.data[0]
+        setUser(u.login)
         let path = "/"; 
         navigate(path);
       })
