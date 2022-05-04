@@ -23,12 +23,13 @@ class Tweet extends React.Component {
         })
     }
 
+
     render() {
         return (
-            this.state.messages.map(message =>
+            this.state.messages.map((message,index) =>
                 <div className="Tweet">
                     <div className="header">
-                        <Friend login={message.login} avatar="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg"/>
+                        <Friend login={message.login} avatar={message.avatar}/>
                     </div>
                     <div className="text">
                         {message.texte}
@@ -60,3 +61,5 @@ class Tweet extends React.Component {
     
 }
 export default Tweet
+
+

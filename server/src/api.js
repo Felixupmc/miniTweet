@@ -167,9 +167,19 @@ function init(db) {
                 res.status(406).send("Missing fields");
             } else {
                 console.log("ca passe ou pas?")
-                messages.createMessage({login, texte,imgUrl,likes,dislikes})
-                    .then((user_id) => resolve(res.status(201).send({ id: user_id })))
-                    .catch((err) => reject(res.status(500).send(err)));
+                users.get(login)
+                .then((userr) => {
+                    console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
+                    console.log(userr)
+                    const avatar = userr.avatar
+                    messages.createMessage({login, texte,imgUrl,likes,dislikes,avatar})
+                        .then((user_id) => resolve(res.status(201).send({ id: user_id })))
+                        .catch((err) => reject(res.status(500).send(err)));
+                })
+                .catch(() => {
+                    res.sendStatus(404);
+                })
+                    
             }
         }).then(() =>{
             
@@ -184,6 +194,8 @@ function init(db) {
             try {
                 messages.getMessages()
                 .then((message) => {
+                    console.log("HELLOO : messages.getMessages() a fonctionné et renvois les messages :")
+                    console.log(message)
                     res.status(201).send(message)
                 })
                 .catch((err) => {
