@@ -74,17 +74,17 @@ function init(db) {
     router
         .route("/user/:user_id(\\d+)")
         .get(async (req, res) => {
-        try {
-            const user = await users.get(req.params.user_id);
-            if (!user)
-                res.sendStatus(404);
-            else
-                res.send(user);
-        }
-        catch (e) {
-            res.status(500).send(e);
-        }
-    })
+            try {
+                const user = await users.get(req.params.user_id);
+                if (!user)
+                    res.sendStatus(404);
+                else
+                    res.send(user);
+            }
+            catch (e) {
+                res.status(500).send(e);
+            }
+        })
         .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
 
     router.put("/user", (req, res) => {
@@ -125,6 +125,33 @@ function init(db) {
         })
         
     } )
+
+    
+    router
+        .route("/getUserAvatar/:user_login")
+        .get(async (req, res) => {
+            try {
+                const user = await users.get(req.params.user_login);
+                if (!user){
+                    console.log("/getUserAvatar/"+req.params.user_login +"    n'a rien trouvé")
+                    res.sendStatus(404);
+                }
+                else{
+                    console.log("/getUserAvatar/"+req.params.user_login + "   a trouvé : ")
+                    const { loginn,  password,  lastname,  firstname,  avatar,  _id } = user
+                    console.log(user)
+                    console.log(avatar)
+                    res.status(201).send(avatar)
+                }
+                    
+            }
+            catch (e) {
+                console.log("erreur dans console.log(/getUserAvatar/"+req.params.user_login)
+                res.status(500).send(e);
+            }
+        })
+    
+        
 
 //===========================================================================================================
 

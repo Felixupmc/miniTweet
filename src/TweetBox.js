@@ -3,6 +3,7 @@ import "./TweetBox.css";
 import {Avatar} from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
+import { tsConstructorType } from "@babel/types";
 
 const axios = require('axios')
 
@@ -50,25 +51,31 @@ function TweetBox() {
         
     }
 
-    const getAvatar = () => {
-        axios.post("http://localhost:4000/getUser",{ 
-            login : user,
-        })
-        .then((res) => {
-            return res.avatar
-        })
-    }
-
-
     const [login,setLogin] = useState(user);
     const [texte,setTexte] = useState('');
     const [imgUrl,setimgUrl] = useState('');
 
+    
+
+    const [avaa, setAvaa] = useState("");
+
+    const getAvatar = () => {
+        axios.get("http://localhost:4000/getUserAvatar/" + user)
+        .then(res => {
+            setAvaa(res.data)
+            return res.data
+        })
+    }
+
+    const ava = getAvatar()
+
+
+    
     return (
         <div>
             <form className="tweetBox">
                 <div className="tweetBox__input">
-                    <Avatar src={getAvatar} />
+                    <Avatar src={avaa} />
                     <input placeholder="Que voulez-vous partager ?"  type="text" value={texte} onChange={(e) => {setTexte(e.target.value)}}/>
                 </div>
                 <div className="imgPLUSbtn">
