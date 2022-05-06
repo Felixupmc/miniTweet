@@ -6,6 +6,8 @@ import LoginPage from './LoginPage.js';
 import RegisterPage from "./RegisterPage.js"
 import ErrorPage from "./ErrorPage.js"
 import ProfilePage from "./ProfilePage.js"
+import ProfilePageUser from "./ProfilePageUser.js"
+
 import { UserContext } from './UserContext';
 
 function App() {
@@ -22,7 +24,7 @@ function App() {
           <Route path="/Login" element={<LoginPage />} />
           <Route path="/Register" element={<RegisterPage />} />
           <Route path="/Profile" element={<ProfilePage />} />
-          <Route path="/Profile/:user_login" element={<ProfilePage />} />
+          <Route path="/Profile/:user_login" element={<ProfilePageUser />} />
 
         <Route path="*" element={<ErrorPage />} />
       </Routes>

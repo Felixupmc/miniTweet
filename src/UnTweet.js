@@ -1,0 +1,58 @@
+import React from "react";
+import "./Tweet.css";
+import {Avatar} from "@material-ui/core";
+import {AiFillSave,AiFillLike,AiFillDislike} from 'react-icons/ai'
+import Friend from "./Friend.js"
+import { useNavigate } from "react-router";
+
+const axios = require('axios')
+
+
+function UnTweet (props) {
+    /* props : userName, text, avatar, image */
+
+    let navigate = useNavigate(); 
+
+    const routeChangeUserPage = () =>{ 
+        let path = "/Profile/"+props.login; 
+        navigate(path);
+    }
+    
+    return (
+            <div className="Tweet">
+                <div className="header">
+                    <button onClick={routeChangeUserPage}>
+                        <Friend login={props.login} avatar={props.avatar}/>
+
+                    </button>
+                </div>
+                <div className="text">
+                    {props.texte}
+                </div>
+                <div className="image">
+                    <img src={props.imgUrl} />
+                </div>
+                <div className="footer">
+                    <button className="btn1">
+                        <AiFillLike color="#1DA1F2" fontSize="2rem" />
+                    </button>
+                    <div>
+                        {props.likes}
+                    </div>
+                    <button className="btn1">
+                        <AiFillDislike color="#1DA1F2" fontSize="2rem" />
+                    </button>
+                    <div>
+                        {props.dislikes}
+                    </div>
+                    <button className="btn1">
+                        <AiFillSave color="#1DA1F2" fontSize="2rem" />
+                    </button>
+                </div>
+            </div>
+        )
+    
+}
+export default UnTweet
+
+
