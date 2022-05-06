@@ -4,22 +4,21 @@ class friends {
     constructor(db) {
     this.db = db
     }
-    createfriends(){   //On créer une liste d'amies, inutile //
-        const friendsliste = [
-            {
-                name: "John",
-                age: 19,
-            },
-            {
-                name: "Candy",
-                age: 18,
-            },
-            {
-                name: "mandy",
-                age: 20,
-            },
-        ];
-        console.log(useState)
+
+
+    createfriends(friendship){   
+        console.log("HELLOO : createfriends se lance")
+        return new Promise((resolve, reject) => {
+            if(false) {
+              reject();
+            } else {
+                console.log(friendship)
+                this.db.friends.insert(friendship) //On insert dans la base //
+                
+              
+            }
+          });
+        
     }
     
 

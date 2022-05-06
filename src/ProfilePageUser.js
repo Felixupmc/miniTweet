@@ -19,7 +19,7 @@ function ProfilePageUser() {
    
     return (
         <div className="app">
-            <Menu activ="1"/>
+            <Menu activ="0"/>
             
             <ProfileMainUnUser />
             <p> 

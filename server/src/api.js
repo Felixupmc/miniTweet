@@ -1,11 +1,13 @@
 const express = require("express");
 const Users = require("./entities/users.js");
 const Messages = require("./entities/messages.js");
+const Friends = require("./entities/friends.js");
 
 function init(db) {
 
     const users = new Users.default(db);
     const messages = new Messages.default(db);
+    const friends = new Friends.default(db);
 
 
     const router = express.Router();
@@ -209,6 +211,75 @@ function init(db) {
                 res.status(512).send(e);
             }
         })
+
+
+
+
+    router
+        .route("/friend") 
+        .put(async (req, res) => { 
+            const { user_login1,user_login2 } = req.body;
+            if (!user_login2 || !user_login1) {
+                res.status(400).send("Missing fields");
+            } else {
+                friends.createfriends({user_login1,user_login2})
+                    .then((user_id) => {
+                        console.log("user a été ajouté !")
+                        res.status(201).send({ id: user_id })
+                    })
+                    .catch((err) => {
+                        console.log("user with same login allready exists")
+                        res.status(501).send(err);
+                    })
+            }
+        })
+        .get(async (req, res) => { 
+            try {
+                const user = await users.get(req.params.user_id); //present dans la route //
+                if (!user)
+                    res.sendStatus(404);
+                else
+                    res.send(user);
+            }
+            catch (e) {
+                res.status(500).send(e);
+            }
+        })
+        .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`)); //on accède à la même route pour delete //
+
+
+
+
+
+        router.put("/messages/liker", (req, res) => {
+            console.log("heyyoooooooooooooo")
+            const { login,texte } = req.body;
+            if (!login || !texte) {
+                console.log(login)
+                console.log(texte)
+                res.status(400).send("Missing fields");
+            } else {
+                messages.liker({login,texte})
+                .then(() => {
+                    console.log("user a bien liiker !")
+                    res.status(201).send({ id: user_id })
+                })
+                .catch((err) => {
+                    console.log("Probleme pour liiker")
+                    res.status(501).send(err);
+                })
+            }
+        })
+
+
+
+
+
+
+
+
+
+
 
     return router;
 }

@@ -17,6 +17,13 @@ function UnTweet (props) {
         let path = "/Profile/"+props.login; 
         navigate(path);
     }
+
+    const liker = () =>{
+        axios.put("http://localhost:4000/messages/liker",{ 
+            login : props.login,
+            texte : props.texte,
+        })
+    }
     
     return (
             <div className="Tweet">
@@ -33,7 +40,7 @@ function UnTweet (props) {
                     <img src={props.imgUrl} />
                 </div>
                 <div className="footer">
-                    <button className="btn1">
+                    <button className="btn1" onClick={liker}>
                         <AiFillLike color="#1DA1F2" fontSize="2rem" />
                     </button>
                     <div>
