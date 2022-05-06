@@ -28,7 +28,7 @@ class users {
           console.log("Erreur dans get user !!!!!!!")
           reject()
         }
-        console.log("user trouvé avec login " + userid+ ":")
+        
         console.log(docs)
         if(docs.length===0){
           console.log("pas d'utilisateur trouvé")

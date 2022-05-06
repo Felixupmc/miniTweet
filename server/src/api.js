@@ -25,7 +25,7 @@ function init(db) {
 
 
     router
-        .route("/user/login")
+        .route("/user/login") //le front demande le login //
         .put(async (req, res) => {
             try {
                 const { login, password } = req.body; //on decoupe le coprs de la requete //
@@ -72,10 +72,10 @@ function init(db) {
     });
 
     router
-        .route("/user/:user_id(\\d+)")
-        .get(async (req, res) => {
+        .route("/user/:user_id") //On verifie que la route existe //
+        .get(async (req, res) => { 
             try {
-                const user = await users.get(req.params.user_id);
+                const user = await users.get(req.params.user_id); //present dans la route //
                 if (!user)
                     res.sendStatus(404);
                 else
@@ -85,7 +85,7 @@ function init(db) {
                 res.status(500).send(e);
             }
         })
-        .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
+        .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`)); //on accède à la même route pour delete //
 
     router.put("/user", (req, res) => {
         const { login, password, lastname, firstname, avatar } = req.body;
