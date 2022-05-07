@@ -6,6 +6,8 @@ import ProfileMainUnUser from "./ProfileMainUnUser.js"
 import axios from "axios";
 
 function ProfilePageUser() {
+
+    
     const user_login = useParams().user_login
     let [user,setUser] = useState({ }) 
     useEffect(async function(){

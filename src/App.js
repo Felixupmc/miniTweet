@@ -23,7 +23,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/Login" element={<LoginPage />} />
           <Route path="/Register" element={<RegisterPage />} />
-          <Route path="/Profile" element={<ProfilePage />} />
+          <Route path="/Profile" element={<ProfilePage u={user}/>} />
           <Route path="/Profile/:user_login" element={<ProfilePageUser />} />
 
         <Route path="*" element={<ErrorPage />} />

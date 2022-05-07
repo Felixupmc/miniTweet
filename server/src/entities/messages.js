@@ -92,6 +92,26 @@ class messages{
 
 
 
+    nbMessage(userLogin) {
+        return new Promise((resolve, reject) => {
+            this.db.messages.find({"login":userLogin},(err, docs) => {
+              if (err) {
+                console.log("Erreur dans nbMessage !!!!!!!")
+                reject()
+              }
+              console.log("nbMessage trouvé :")
+              console.log(docs.length)
+              if(docs.length===0){
+                console.log("pas d'nbMessage trouvé")
+                reject()
+              } else {
+                console.log("nbMessage trouvé !!!!!!!")
+                resolve(docs.length)
+                
+              }
+            })
+          });
+    }
 
 
 

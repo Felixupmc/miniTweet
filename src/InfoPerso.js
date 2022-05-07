@@ -2,16 +2,16 @@ import React from 'react'
 import "./InfoPerso.css"
 import {Avatar} from "@material-ui/core";
 
-function InfoPerso() {
+function InfoPerso(props) {
   
 
     return (
         <div className='InfoPerso'>
             <div className="info">
                 <div className="avatar">
-                    <Avatar src="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg" />
+                    <Avatar src={props.avatar} />
                 </div>
-                <h2>Jean LASSALE</h2>
+                <h2>{props.login}</h2>
             </div>
             <div className="info">
                 <h4>Age : </h4>
@@ -23,7 +23,7 @@ function InfoPerso() {
             </div>
             <div className="info">
                 <h4>Messages : </h4>
-                <h5>25</h5>
+                <h5>{props.nbMe}</h5>
             </div>
         </div>
     );

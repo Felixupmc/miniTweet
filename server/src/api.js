@@ -274,7 +274,27 @@ function init(db) {
 
 
 
-
+        router
+        .route("/getUserNombrebMessage/:user_login")
+        .get(async (req, res) => {
+            try {
+                const nb = await messages.nbMessage(req.params.user_login);
+                if (!nb){
+                    console.log("/getUserNombrebMessage/"+req.params.user_login +"    n'a rien trouvé")
+                    res.sendStatus(404);
+                }
+                else{
+                    console.log("/getUserNombrebMessage/"+req.params.user_login + " DANS API  a trouvé : ")
+                    console.log(nb)
+                    res.status(201).send({nb})
+                }
+                    
+            }
+            catch (e) {
+                console.log("erreur dans console.log(/getUserAvatar/"+req.params.user_login)
+                res.status(500).send(e);
+            }
+        })
 
 
 
