@@ -22,6 +22,7 @@ function ProfilePage(props) {
             
             <ProfileMain login={user.login} avatar={user.avatar}/>
 
+
         </div>
 
     )

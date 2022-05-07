@@ -37,6 +37,13 @@ function UnTweet (props) {
                         <Friend login={props.login} avatar={props.avatar}/>
 
                     </button>
+						<input 
+                        className="delete-button"
+                        type='button'
+                        value='X'
+                        onClick={() => {
+                            del()
+                        }}/>
                 </div>
                 <div className="text">
                     {props.texte}
@@ -57,7 +64,7 @@ function UnTweet (props) {
                     <div>
                         {props.dislikes}
                     </div>
-                    <button className="btn1" onClick={del}>
+                    <button className="btn1" >
                         <AiFillSave color="#1DA1F2" fontSize="2rem" />
                     </button>
                 </div>

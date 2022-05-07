@@ -1,0 +1,53 @@
+.tweetInfo {
+    display: flex;
+}
+
+.btn1 {
+    background-color: var(--twitter-backround);
+    border: none;
+    color: black;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.image {
+    display: block;
+    width: 100px;
+}
+
+.image > img {
+    max-width: 500px;
+    border-radius: 30px;
+    margin-left: 20px;
+}
+
+.header > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.Tweet {
+    border-bottom: 1px solid var(--twitter-color);
+    align-items: flex-start;
+}
+
+.footer {
+    display: flex;
+    margin-top: 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.titre {
+    margin-left: 10px;
+}
+
+.text {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}

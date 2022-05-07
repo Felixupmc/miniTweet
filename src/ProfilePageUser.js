@@ -5,11 +5,12 @@ import Menu from './Menu';
 import ProfileMainUnUser from "./ProfileMainUnUser.js"
 import axios from "axios";
 
-function ProfilePageUser() {
+function ProfilePageUser(props) {
 
     
-    const user_login = useParams().user_login
     let [user,setUser] = useState({ }) 
+    const user_login = useParams().user_login
+    
     useEffect(async function(){
         const u = await axios.get("http://localhost:4000/user/"+user_login)
         setUser(u.data) 
@@ -23,7 +24,7 @@ function ProfilePageUser() {
         <div className="app">
             <Menu activ="0"/>
             
-            <ProfileMainUnUser />
+            <ProfileMainUnUser login={user.login} avatar={user.avatar}/>
             <p> 
 
                 {(user.login)}
