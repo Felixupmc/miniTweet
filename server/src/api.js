@@ -212,6 +212,28 @@ function init(db) {
             }
         })
 
+    router
+    .route("/messagesFrom/:user_login")
+    .get(async (req, res) => {
+        try {
+            messages.getMessagesFrom(req.params.user_login)
+            .then((message) => {
+                console.log("HELLOO de API /messagesFrom/:user_login :::  a fonctionné et renvois les messages :")
+                console.log(message)
+                res.status(201).send(message)
+            })
+            .catch((err) => {
+                console.log("HELLOO de API /messagesFrom/:user_login :::  n'a pas fonctionné")
+                res.sendStatus(406);
+            })
+        }
+        catch (e) {
+            console.log("HELLOO00000eeeeeeee")
+
+            res.status(512).send(e);
+        }
+    })
+
 
 
 

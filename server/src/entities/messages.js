@@ -31,6 +31,19 @@ class messages{
         
     }
 
+    getMessagesFrom(login){ //On retourne la liste de nos propres messages //
+        console.log("HELLOO : getMessages se lance")
+        return new Promise((resolve, reject) => {
+            this.db.messages.find({"login" : login}).sort({"createdAt":-1}).exec( (err, docs) => {
+             if (err) {
+              reject(err);
+             }
+             resolve(docs);
+            });
+           });
+        
+    }
+
 
     liker2(props) {
         return new Promise((resolve, reject) => {

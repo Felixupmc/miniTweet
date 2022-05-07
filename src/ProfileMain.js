@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./ProfileMain.css"
 import TweetBox from "./TweetBox"
-import Tweet from "./Tweet"
+import TweetPerso from "./TweetPerso"
 import Tabs from "./Tabs";
 import InfoPerso from "./InfoPerso"
 import Friend from "./Friend.js"
@@ -21,6 +21,11 @@ function ProfileMain(props) {
     }
     const nbbb = getNbMessage()
 
+    if(!user) {
+        return(
+            <div> Vous n'etes pas connécté</div>
+        )
+    }
     return (
         <div className="ProfileMain">
             <div className="sticky">
@@ -34,15 +39,7 @@ function ProfileMain(props) {
                 </div>
 
                 <div label="Messages">
-                    <Tweet />
-                    
-                    {/* postList */}
-                    {/* postList */}
-                    {/* postList */}
-                    {/* postList */}
-                    {/* postList */}
-                    {/* postList */}
-                    {/* postList */}
+                    <TweetPerso log={user}/>
                 </div>
                 
                 <div label="Amies">
