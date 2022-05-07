@@ -261,17 +261,18 @@ function init(db) {
     router
         .route("/friend") 
         .put(async (req, res) => { 
+            console.log("API create Friend commence")
             const { user_login1,user_login2 } = req.body;
             if (!user_login2 || !user_login1) {
                 res.status(400).send("Missing fields");
             } else {
                 friends.createfriends({user_login1,user_login2})
                     .then((user_id) => {
-                        console.log("user a été ajouté !")
+                        console.log("API : user a été ajouté !")
                         res.status(201).send({ id: user_id })
                     })
                     .catch((err) => {
-                        console.log("user with same login allready exists")
+                        console.log("API : amitier with same logins allready exists")
                         res.status(501).send(err);
                     })
             }

@@ -7,14 +7,23 @@ class friends {
 
 
     createfriends(friendship){   
-        console.log("HELLOO : createfriends se lance")
         return new Promise((resolve, reject) => {
             if(false) {
               reject();
             } else {
+                console.log("HELLOO : createfriends se lance")
                 console.log(friendship)
-                this.db.friends.insert(friendship) //On insert dans la base //
-                
+                this.isFriend(friendship.user_login1,friendship.user_login2)
+                .then(() => {
+                    console.log("AMITIER SE CREER")
+                    this.db.friends.insert(friendship) //On insert dans la base //
+                    resolve()
+                })
+                .catch(() => {
+                    console.log("AMITIER EXISTE DEJA")
+                    reject()
+                    
+                })
               
             }
           });
@@ -29,20 +38,44 @@ class friends {
              
     }   
     
-    isFriend(user1_id,user2_id){
+
+    isFriend(user1_id,user2_id) {
         return new Promise((resolve, reject) => {
-            var contrainte = {"follower_id" : user1_id, "followed_id" : user2_id}
-            this.db.friends.find(contrainte, function(err,docs){
-                if(false){
-                    reject(err)
+
+            this.db.friends.find({"user_login1":user1_id,"user_login2":user2_id},(err, docs) => {
+                if (err) {
+                console.log("Erreur dans isFriend !!!!!!!")
+                reject()
                 }
-                else{
-                    resolve(docs.size() > 0)
+                console.log("isFriend continu :")
+                console.log(docs)
+                if(docs.length===0){
+                    /////////////////////////////////////////////////////////
+                    this.db.friends.find({"user_login1":user2_id,"user_login2":user1_id},(err, docs) => {
+                        if (err) {
+                        console.log("Erreur dans isFriend !!!!!!!")
+                        reject()
+                        }
+                        console.log("isFriend continu :")
+                        console.log(docs)
+                        if(docs.length===0){
+                            console.log("pas de friendship trouvé")
+                            resolve()
+                        } else {
+                            console.log("friendship existe !")
+                            reject()
+                        
+                        }
+                    })
+                    ////////////////////////////////////////////////////////
+                } else {
+                console.log("friendship existe !")
+                reject()
+                
                 }
             })
         });
-
-    }
+      }
 
     removeFriend(user1_id,user2_id){
 

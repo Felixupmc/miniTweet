@@ -23,6 +23,17 @@ function ProfileMainUnUser(props) {
     }
     const nbbb = getNbMessage()
 
+//////////////////////////////////////////////////////////////////:
+
+    const addF = () =>{ 
+        axios.put("http://localhost:4000/friend",{ 
+            user_login1: user,
+            user_login2: props.login
+        })
+    }
+
+
+
 
     if(props.login==user){
         return (
@@ -62,6 +73,7 @@ function ProfileMainUnUser(props) {
                         className="delete-button"
                         type='button'
                         value='Ajouter en ami'
+                        onClick={addF}
                         />
     
     
