@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Tweet.css";
 import {Avatar} from "@material-ui/core";
 import {AiFillSave,AiFillLike,AiFillDislike} from 'react-icons/ai'
 import Friend from "./Friend.js"
 import { useNavigate } from "react-router";
+import { UserContext } from "./UserContext";
 
 const axios = require('axios')
 
 
 function UnTweet (props) {
     /* props : userName, text, avatar, image */
+
+    const {user,setUser} = useContext(UserContext)
 
     let navigate = useNavigate(); 
 
@@ -30,7 +33,8 @@ function UnTweet (props) {
         axios.delete("http://localhost:4000/messages/"+(props.login)+"/"+(props.texte), {})
     }
     
-    return (
+    if(user==props.login){
+        return (
             <div className="Tweet">
                 <div className="header">
                     <button onClick={routeChangeUserPage}>
@@ -44,6 +48,42 @@ function UnTweet (props) {
                         onClick={() => {
                             del()
                         }}/>
+                </div>
+                <div className="text">
+                    {props.texte}
+                </div>
+                <div className="image">
+                    <img src={props.imgUrl} />
+                </div>
+                <div className="footer">
+                    <button className="btn1" onClick={liker}>
+                        <AiFillLike color="#1DA1F2" fontSize="2rem" />
+                    </button>
+                    <div>
+                        {props.likes}
+                    </div>
+                    <button className="btn1">
+                        <AiFillDislike color="#1DA1F2" fontSize="2rem" />
+                    </button>
+                    <div>
+                        {props.dislikes}
+                    </div>
+                    <button className="btn1" >
+                        <AiFillSave color="#1DA1F2" fontSize="2rem" />
+                    </button>
+                </div>
+            </div>
+        )
+    }
+
+    
+    return (
+            <div className="Tweet">
+                <div className="header">
+                    <button onClick={routeChangeUserPage}>
+                        <Friend login={props.login} avatar={props.avatar}/>
+
+                    </button>
                 </div>
                 <div className="text">
                     {props.texte}
