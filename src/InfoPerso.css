@@ -7,3 +7,8 @@
 .info > h5 {
     margin-left: 15px;
 }
+
+.infoHead {
+    display: flex;
+    align-items: center;
+}

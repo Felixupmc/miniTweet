@@ -15,6 +15,10 @@
     scrollbar-width: none;
 }
 
+.bor {
+    border: 5px solid var(--twitter-color);
+}
+
 
 .ProfileMain__header {
    
@@ -72,6 +76,7 @@ border-width: 1px 1px 0 1px;
 
 .delete-button {
     margin-left: 10px;
+    margin-bottom: 10px;
     padding: 10px 10px 10px 10px;
     background-color: lightblue;
     border: none;

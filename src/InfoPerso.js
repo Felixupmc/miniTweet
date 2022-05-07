@@ -8,10 +8,12 @@ function InfoPerso(props) {
     return (
         <div className='InfoPerso'>
             <div className="info">
-                <div className="avatar">
-                    <Avatar src={props.avatar} />
+                <div className='infoHead'>
+                    <div className="avatar">
+                        <Avatar src={props.avatar} />
+                    </div>
+                    <h2>{props.login}</h2>
                 </div>
-                <h2>{props.login}</h2>
             </div>
             <div className="info">
                 <h4>Age : </h4>
