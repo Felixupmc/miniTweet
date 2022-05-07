@@ -286,7 +286,7 @@ function init(db) {
                 else{
                     console.log("/getUserNombrebMessage/"+req.params.user_login + " DANS API  a trouvé : ")
                     console.log(nb)
-                    res.status(201).send({nb})
+                    res.status(201).send({nbM:nb})
                 }
                     
             }

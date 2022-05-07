@@ -15,12 +15,11 @@ function ProfileMain(props) {
     const getNbMessage = () => {
         axios.get("http://localhost:4000/getUserNombrebMessage/" + user)
         .then(res => {
-            setNbM(res.data)
-            return res.data
+            setNbM(res.data.nbM)
+            return res.data.nbM
         })
     }
-    //const nbbb = getNbMessage()
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    const nbbb = getNbMessage()
 
     return (
         <div className="ProfileMain">
