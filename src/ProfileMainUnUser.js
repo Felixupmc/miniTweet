@@ -8,9 +8,13 @@ import Friend from "./Friend.js"
 import { UserContext } from "./UserContext";
 import axios from "axios";
 import TweetPerso from "./TweetPerso"
+import { useParams } from "react-router";
 
 
 function ProfileMainUnUser(props) {
+
+    const user_login = useParams().user_login
+
 
     const {user,setUser} = useContext(UserContext)
     const [nbM, setNbM] = useState("");
@@ -34,75 +38,60 @@ function ProfileMainUnUser(props) {
 
 
 
-
-    if(props.login==user){
-        return (
-            <div className="ProfileMain">
-    
-    
-                    <div className="bor">
-                        <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM} />
-                    </div>
-    
-    
-    
-                    <div label="Messages">
-                        <Tweet />
-    
-                        {/* postList */}
-                        {/* postList */}
-                        {/* postList */}
-                        {/* postList */}
-                        {/* postList */}
-                        {/* postList */}
-                        {/* postList */}
-                    </div>
-    
-    
-    
-            </div>
-        )
-    } else {
-        return (
-            <div className="ProfileMain">
-    
-    
-                    <div className="bor">
-                        <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM} />
-                        <input 
-                        className="delete-button"
-                        type='button'
-                        value='Ajouter en ami'
-                        onClick={addF}
-                        />
-    
-    
-                        <input 
-                        className="delete-button"
-                        type='button'
-                        value='Supprimer'
-                        />
-                    </div>
-    
-    
-    
-                    <div label="Messages">
-                        <Tweet />
-    
-                        {/* postList */}
-                        {/* postList */}
-                        {/* postList */}
-                        {/* postList */}
-                        {/* postList */}
-                        {/* postList */}
-                        {/* postList */}
-                    </div>
-    
-    
-    
-            </div>
-        )
+    if(user){
+        if(user_login==user){
+            return (
+                <div className="ProfileMain">
+        
+        
+                        <div className="bor">
+                            <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM} />
+                        </div>
+        
+        
+        
+                        <div label="Messages">
+                            <TweetPerso log={user_login}/>
+                        </div>
+        
+        
+        
+                </div>
+            )
+        }
     }
+    
+    return (
+        <div className="ProfileMain">
+
+
+                <div className="bor">
+                    <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM} />
+                    <input 
+                    className="delete-button"
+                    type='button'
+                    value='Ajouter en ami'
+                    onClick={addF}
+                    />
+
+
+                    <input 
+                    className="delete-button"
+                    type='button'
+                    value='Supprimer'
+                    />
+                </div>
+
+
+
+                <div label="Messages">
+                    <TweetPerso log={user_login}/>
+                </div>
+
+
+
+        </div>
+    )
     
 }
 

@@ -25,11 +25,6 @@ function ProfilePageUser(props) {
             <Menu activ="0"/>
             
             <ProfileMainUnUser login={user.login} avatar={user.avatar}/>
-            <p> 
-
-                {(user.login)}
-                Connected
-            </p>
 
         </div>
 
