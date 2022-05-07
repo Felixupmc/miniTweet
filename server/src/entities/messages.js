@@ -128,8 +128,19 @@ class messages{
 
 
 
+    remove(login,texte){
+        return new Promise((resolve, reject) => {
+            this.db.messages.remove({"login":login,"texte":texte},(err, docs) => {
+                if (err) {
+                  console.log("Erreur dans remove Messsages !!!!!!!")
+                  reject()
+                }
+                console.log("remove messages a fonctionné :")
+                resolve()
+            })
 
-
+        })
+    }
 
 }
 

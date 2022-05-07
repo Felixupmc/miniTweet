@@ -24,6 +24,11 @@ function UnTweet (props) {
             texte : props.texte,
         })
     }
+
+
+    const del = () =>{
+        axios.delete("http://localhost:4000/messages/"+(props.login)+"/"+(props.texte), {})
+    }
     
     return (
             <div className="Tweet">
@@ -52,7 +57,7 @@ function UnTweet (props) {
                     <div>
                         {props.dislikes}
                     </div>
-                    <button className="btn1">
+                    <button className="btn1" onClick={del}>
                         <AiFillSave color="#1DA1F2" fontSize="2rem" />
                     </button>
                 </div>

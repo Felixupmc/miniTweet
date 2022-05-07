@@ -213,6 +213,27 @@ function init(db) {
         })
 
     router
+        .route("/messages/:login/:texte")
+        .delete(async (req, res) => {
+            const login = req.params.login;
+            const texte = req.params.texte;
+            console.log(".delete(/message se lance")
+            console.log(login)
+            console.log(texte)
+            try{
+                messages.remove(login,texte)
+                .then(() => {
+                    console.log(".delete(/message REUSSIT")
+                    res.status(201).send()
+                })
+            } catch(e) {
+                console.log("HELLOO00000")
+
+                res.status(512).send(e);
+            }
+        })
+
+    router
     .route("/messagesFrom/:user_login")
     .get(async (req, res) => {
         try {
