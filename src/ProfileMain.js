@@ -21,6 +21,18 @@ function ProfileMain(props) {
     }
     const nbbb = getNbMessage()
 
+    const [nbF, setNbF] = useState("");
+    const getNbFriends = () => {
+        axios.get("http://localhost:4000/getUserNombrebAmies/" + props.login)
+        .then(res => {
+            setNbF(res.data.nbF)
+            return res.data.nbF
+        })
+    }
+    const nbbbbbbbb = getNbFriends()
+
+    ////////////////////////////////////////////////////////////
+
     if(!user) {
         return(
             <div> Vous n'etes pas connécté</div>
@@ -35,7 +47,7 @@ function ProfileMain(props) {
         
             <Tabs className="sticky">
                 <div label="Informations Personnelles">
-                    <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM}/>
+                    <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM} nbFr={nbF} />
                 </div>
 
                 <div label="Messages">

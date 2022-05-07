@@ -27,6 +27,16 @@ function ProfileMainUnUser(props) {
     }
     const nbbb = getNbMessage()
 
+    const [nbF, setNbF] = useState("");
+    const getNbFriends = () => {
+        axios.get("http://localhost:4000/getUserNombrebAmies/" + props.login)
+        .then(res => {
+            setNbF(res.data.nbF)
+            return res.data.nbF
+        })
+    }
+    const nbbbbbbbb = getNbFriends()
+
 //////////////////////////////////////////////////////////////////:
 
     const addF = () =>{ 
@@ -45,7 +55,7 @@ function ProfileMainUnUser(props) {
         
         
                         <div className="bor">
-                            <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM} />
+                            <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM} nbFr={nbF} />
                         </div>
         
                         <div className="amm">
@@ -69,7 +79,7 @@ function ProfileMainUnUser(props) {
 
 
                 <div className="bor">
-                    <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM} />
+                    <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM} nbFr={nbF} />
                     <input 
                     className="delete-button"
                     type='button'

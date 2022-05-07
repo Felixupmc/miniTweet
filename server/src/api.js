@@ -323,14 +323,30 @@ function init(db) {
         .get(async (req, res) => {
             try {
                 const nb = await messages.nbMessage(req.params.user_login);
-                if (!nb){
-                    console.log("/getUserNombrebMessage/"+req.params.user_login +"    n'a rien trouvé")
-                    res.sendStatus(404);
-                }
-                else{
                     console.log("/getUserNombrebMessage/"+req.params.user_login + " DANS API  a trouvé : ")
                     console.log(nb)
                     res.status(201).send({nbM:nb})
+                }
+                    
+            catch (e) {
+                console.log("erreur dans console.log(/getUserAvatar/"+req.params.user_login)
+                res.status(500).send(e);
+            }
+        })
+
+        router
+        .route("/getUserNombrebAmies/:user_login")
+        .get(async (req, res) => {
+            try {
+                const nb = await friends.nbFriends(req.params.user_login);
+                if (!nb){
+                    console.log("/getUserNombrebAmies/"+req.params.user_login +"    n'a rien trouvé")
+                    res.sendStatus(404);
+                }
+                else{
+                    console.log("/getUserNombrebAmies/"+req.params.user_login + " DANS API  a trouvé : ")
+                    console.log(nb)
+                    res.status(201).send({nbF:nb})
                 }
                     
             }
@@ -339,6 +355,7 @@ function init(db) {
                 res.status(500).send(e);
             }
         })
+
 
 		router
             .route("/FriendsOf/:user_login")

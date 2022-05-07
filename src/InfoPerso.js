@@ -16,12 +16,8 @@ function InfoPerso(props) {
                 </div>
             </div>
             <div className="info">
-                <h4>Age : </h4>
-                <h5>19</h5>
-            </div>
-            <div className="info">
                 <h4>Followers : </h4>
-                <h5>3</h5>
+                <h5>{props.nbFr}</h5>
             </div>
             <div className="info">
                 <h4>Messages : </h4>

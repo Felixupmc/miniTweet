@@ -96,6 +96,23 @@ class friends {
         
     }
 
+    nbFriends(userLogin) {
+        return new Promise((resolve, reject) => {
+            this.db.friends.find({"user_login1":userLogin},(err, docs) => {
+              if (err) {
+                console.log("Erreur dans nbMessage !!!!!!!")
+                reject()
+              }
+              console.log("nbMessage trouvé :")
+              console.log(docs.length)
+                console.log("nbMessage trouvé !!!!!!!")
+                resolve(docs.length)
+                
+            })
+          });
+    }
+
+
     removeFriend(user1_id,user2_id){
 
     }
