@@ -16,7 +16,8 @@ class friends {
                 this.isFriend(friendship.user_login1,friendship.user_login2)
                 .then(() => {
                     console.log("AMITIER SE CREER")
-                    this.db.friends.insert(friendship) //On insert dans la base //
+                    this.db.friends.insert({"user_login1":friendship.user_login1,"user_login2":friendship.user_login2,"user2_avatar":friendship.user2_avatar}) //On insert dans la base //
+                    this.db.friends.insert({"user_login1":friendship.user_login2,"user_login2":friendship.user_login1,"user2_avatar":friendship.user1_avatar}) //On insert dans la base //
                     resolve()
                 })
                 .catch(() => {
@@ -76,6 +77,24 @@ class friends {
             })
         });
       }
+
+
+      getFriendsOf(login){ //On retourne la liste de nos propres messages //
+        console.log("HELLOO from back : getFriendsOf se lance")
+        console.log("login : "+login)
+        return new Promise((resolve, reject) => {
+            this.db.friends.find({"user_login1": login}).exec( (err, docs) => {
+             if (err) {
+                console.log("HELLOO from back : getFriendsOf ERREUR")
+                reject(err);
+             }
+             console.log("HELLOO from back : getFriendsOf fini bien :")
+             console.log(docs)
+             resolve(docs);
+            });
+        });
+        
+    }
 
     removeFriend(user1_id,user2_id){
 

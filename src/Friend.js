@@ -5,7 +5,7 @@ import {AiFillSave,AiFillLike,AiFillDislike} from 'react-icons/ai'
 
 
 {/* props :  */}
-function Friends (props) {
+function Friend (props) {
 
     const clique = () => {
         //redirection vers la page de l'utilisateur
@@ -28,4 +28,4 @@ function Friends (props) {
     )
 }
 
-export default Friends
+export default Friend

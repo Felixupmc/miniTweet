@@ -86,3 +86,14 @@ border-width: 1px 1px 0 1px;
     background-color: white;
     border: 2px solid lightblue;
 }
+
+
+.amm {
+    border-bottom: 5px solid var(--twitter-color);
+    border-left: 5px solid var(--twitter-color);
+    border-right: 5px solid var(--twitter-color);
+}
+
+.amm > *{
+    margin-left: 20px;
+}

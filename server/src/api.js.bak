@@ -1,11 +1,13 @@
 const express = require("express");
 const Users = require("./entities/users.js");
 const Messages = require("./entities/messages.js");
+const Friends = require("./entities/friends.js");
 
 function init(db) {
 
     const users = new Users.default(db);
     const messages = new Messages.default(db);
+    const friends = new Friends.default(db);
 
 
     const router = express.Router();
@@ -25,7 +27,7 @@ function init(db) {
 
 
     router
-        .route("/user/login")
+        .route("/user/login") //le front demande le login //
         .put(async (req, res) => {
             try {
                 const { login, password } = req.body; //on decoupe le coprs de la requete //
@@ -72,10 +74,10 @@ function init(db) {
     });
 
     router
-        .route("/user/:user_id(\\d+)")
-        .get(async (req, res) => {
+        .route("/user/:user_id") //On verifie que la route existe //
+        .get(async (req, res) => { 
             try {
-                const user = await users.get(req.params.user_id);
+                const user = await users.get(req.params.user_id); //present dans la route //
                 if (!user)
                     res.sendStatus(404);
                 else
@@ -85,7 +87,7 @@ function init(db) {
                 res.status(500).send(e);
             }
         })
-        .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`));
+        .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`)); //on accède à la même route pour delete //
 
     router.put("/user", (req, res) => {
         const { login, password, lastname, firstname, avatar } = req.body;
@@ -209,6 +211,139 @@ function init(db) {
                 res.status(512).send(e);
             }
         })
+
+    router
+        .route("/messages/:login/:texte")
+        .delete(async (req, res) => {
+            const login = req.params.login;
+            const texte = req.params.texte;
+            console.log(".delete(/message se lance")
+            console.log(login)
+            console.log(texte)
+            try{
+                messages.remove(login,texte)
+                .then(() => {
+                    console.log(".delete(/message REUSSIT")
+                    res.status(201).send()
+                })
+            } catch(e) {
+                console.log("HELLOO00000")
+
+                res.status(512).send(e);
+            }
+        })
+
+    router
+    .route("/messagesFrom/:user_login")
+    .get(async (req, res) => {
+        try {
+            messages.getMessagesFrom(req.params.user_login)
+            .then((message) => {
+                console.log("HELLOO de API /messagesFrom/:user_login :::  a fonctionné et renvois les messages :")
+                console.log(message)
+                res.status(201).send(message)
+            })
+            .catch((err) => {
+                console.log("HELLOO de API /messagesFrom/:user_login :::  n'a pas fonctionné")
+                res.sendStatus(406);
+            })
+        }
+        catch (e) {
+            console.log("HELLOO00000eeeeeeee")
+
+            res.status(512).send(e);
+        }
+    })
+
+
+
+
+    router
+        .route("/friend") 
+        .put(async (req, res) => { 
+            console.log("API create Friend commence")
+            const { user_login1,user_login2 } = req.body;
+            if (!user_login2 || !user_login1) {
+                res.status(400).send("Missing fields");
+            } else {
+                friends.createfriends({user_login1,user_login2})
+                    .then((user_id) => {
+                        console.log("API : user a été ajouté !")
+                        res.status(201).send({ id: user_id })
+                    })
+                    .catch((err) => {
+                        console.log("API : amitier with same logins allready exists")
+                        res.status(501).send(err);
+                    })
+            }
+        })
+        .get(async (req, res) => { 
+            try {
+                const user = await users.get(req.params.user_id); //present dans la route //
+                if (!user)
+                    res.sendStatus(404);
+                else
+                    res.send(user);
+            }
+            catch (e) {
+                res.status(500).send(e);
+            }
+        })
+        .delete((req, res, next) => res.send(`delete user ${req.params.user_id}`)); //on accède à la même route pour delete //
+
+
+
+
+
+        router.put("/messages/liker", (req, res) => {
+            console.log("heyyoooooooooooooo")
+            const { login,texte } = req.body;
+            if (!login || !texte) {
+                console.log(login)
+                console.log(texte)
+                res.status(400).send("Missing fields");
+            } else {
+                messages.liker({login,texte})
+                .then(() => {
+                    console.log("user a bien liiker !")
+                    res.status(201).send({ id: user_id })
+                })
+                .catch((err) => {
+                    console.log("Probleme pour liiker")
+                    res.status(501).send(err);
+                })
+            }
+        })
+
+
+
+
+        router
+        .route("/getUserNombrebMessage/:user_login")
+        .get(async (req, res) => {
+            try {
+                const nb = await messages.nbMessage(req.params.user_login);
+                if (!nb){
+                    console.log("/getUserNombrebMessage/"+req.params.user_login +"    n'a rien trouvé")
+                    res.sendStatus(404);
+                }
+                else{
+                    console.log("/getUserNombrebMessage/"+req.params.user_login + " DANS API  a trouvé : ")
+                    console.log(nb)
+                    res.status(201).send({nbM:nb})
+                }
+                    
+            }
+            catch (e) {
+                console.log("erreur dans console.log(/getUserAvatar/"+req.params.user_login)
+                res.status(500).send(e);
+            }
+        })
+
+
+
+
+
 
     return router;
 }

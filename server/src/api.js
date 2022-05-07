@@ -340,6 +340,25 @@ function init(db) {
             }
         })
 
+		router
+            .route("/FriendsOf/:user_login")
+            .get(async (req, res) => {
+                try {
+                    friends.getFriendsOf(req.params.user_login)
+                    .then((message) => {
+                        console.log("HELLOO de API /FriendsOf/:user_login :::  a fonctionné et renvois les messages :")
+                        console.log(message)
+                        res.status(201).send(message)
+                    })
+                    .catch((err) => {
+                        console.log("HELLOO de API /FriendsOf/:user_login :::  n'a pas fonctionné")
+                        res.sendStatus(406);
+                    })
+                }
+                catch (e) {
+                    res.status(512).send(e);
+                }
+            })
 
 
 

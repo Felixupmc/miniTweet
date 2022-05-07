@@ -4,7 +4,7 @@ import TweetBox from "./TweetBox"
 import Tweet from "./Tweet"
 import Tabs from "./Tabs";
 import InfoPerso from "./InfoPerso"
-import Friend from "./Friend.js"
+import Friendss from "./Friendss.js"
 import { UserContext } from "./UserContext";
 import axios from "axios";
 import TweetPerso from "./TweetPerso"
@@ -48,7 +48,10 @@ function ProfileMainUnUser(props) {
                             <InfoPerso login={props.login} avatar={props.avatar} nbMe={nbM} />
                         </div>
         
-        
+                        <div className="amm">
+                            <div>Amies :</div>
+                            <Friendss login={user_login} />
+                        </div>
         
                         <div label="Messages">
                             <TweetPerso log={user_login}/>
@@ -83,6 +86,10 @@ function ProfileMainUnUser(props) {
                 </div>
 
 
+                <div className="amm">
+                    <h2>Amies :</h2>
+                    <Friendss login={user_login} />
+                </div>
 
                 <div label="Messages">
                     <TweetPerso log={user_login}/>

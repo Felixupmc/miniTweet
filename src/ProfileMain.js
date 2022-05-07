@@ -4,9 +4,9 @@ import TweetBox from "./TweetBox"
 import TweetPerso from "./TweetPerso"
 import Tabs from "./Tabs";
 import InfoPerso from "./InfoPerso"
-import Friend from "./Friend.js"
 import axios from "axios";
 import { UserContext } from "./UserContext";
+import Friendss from "./Friendss";
 
 function ProfileMain(props) {
 
@@ -43,8 +43,7 @@ function ProfileMain(props) {
                 </div>
                 
                 <div label="Amies">
-                    <Friend login="kenzz" avatar="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg"/>
-                    <Friend login="felzz" avatar="https://static.actu.fr/uploads/2021/10/portrait-jean-lassalle-gl-actu-toulouse-2.jpg"/>
+                    <Friendss login={user} />
                 </div>
             </Tabs>
 
