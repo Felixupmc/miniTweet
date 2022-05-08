@@ -339,15 +339,9 @@ function init(db) {
         .get(async (req, res) => {
             try {
                 const nb = await friends.nbFriends(req.params.user_login);
-                if (!nb){
-                    console.log("/getUserNombrebAmies/"+req.params.user_login +"    n'a rien trouvé")
-                    res.sendStatus(404);
-                }
-                else{
-                    console.log("/getUserNombrebAmies/"+req.params.user_login + " DANS API  a trouvé : ")
-                    console.log(nb)
-                    res.status(201).send({nbF:nb})
-                }
+                console.log("/getUserNombrebAmies/"+req.params.user_login +"   :")
+                console.log(nb)
+                res.status(201).send({nbF:nb})
                     
             }
             catch (e) {

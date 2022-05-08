@@ -22,7 +22,7 @@ function ProfilePageUser(props) {
    
     return (
         <div className="app">
-            <Menu activ="0"/>
+            <Menu />
             
             <ProfileMainUnUser login={user.login} avatar={user.avatar}/>
 

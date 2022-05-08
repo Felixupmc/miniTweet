@@ -47,6 +47,9 @@ function Menu( props ){
 
     return(
         <div className="menu">
+            <h3 className="usrName">
+                {user}
+            </h3>
             <div className="searchBar">
                 <SearchBar />
             </div>
@@ -71,9 +74,6 @@ function Menu( props ){
                 <button className="btn" onClick={routeChangeRegister}>
                     Register
                 </button>
-            </div>
-            <div>
-                {user}
             </div>
 
         </div>
